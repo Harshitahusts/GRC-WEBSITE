@@ -5,14 +5,14 @@ import { platform } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Platform",
-  description: "Continuous monitoring, automatic evidence, cross-framework controls, policies, risk and an auditor portal in one place.",
+  description: "Gap assessment, personal data map, continuous checks, evidence, policies and processor register for the DPDP Act.",
 };
 
 export default function PlatformPage() {
   return (
     <>
-      <PageIntro title="Everything your audit needs, kept up to date on its own">
-        <p>These are included in every plan. Modules add more on top.</p>
+      <PageIntro title="The groundwork for DPDP compliance, kept up to date on its own">
+        <p>Included in every plan. Modules add the day-to-day processes the Act requires on top.</p>
       </PageIntro>
       <section className="mx-auto max-w-6xl px-4 sm:px-6">
         <ul className="border-t-2 border-ink">
@@ -21,8 +21,8 @@ export default function PlatformPage() {
               <h2 className="text-2xl font-semibold tracking-[-0.01em]">{c.title}</h2>
               <p className="max-w-prose text-ink-soft">{c.body}</p>
               <p className="text-sm text-ink-soft md:text-right">
-                <span className="sr-only">Relevant to: </span>
-                {c.frameworks.join(", ")}
+                <span className="sr-only">DPDP reference: </span>
+                {c.refs.join(", ")}
               </p>
             </li>
           ))}

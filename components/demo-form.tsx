@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { frameworks, plans } from "@/lib/content";
+import { modules, plans } from "@/lib/content";
 import { site } from "@/lib/site";
 
 type State = "idle" | "sending" | "sent" | "error";
@@ -77,12 +77,12 @@ export function DemoForm() {
         </select>
       </label>
       <fieldset className="sm:col-span-2">
-        <legend className="font-semibold">Frameworks you need</legend>
+        <legend className="font-semibold">What you need help with</legend>
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
-          {frameworks.map((f) => (
-            <label key={f.name} className="flex items-center gap-2.5">
-              <input type="checkbox" name="frameworks" value={f.name} className="size-4 accent-[#15233f]" />
-              {f.name}
+          {modules.map((m) => (
+            <label key={m.name} className="flex items-center gap-2.5">
+              <input type="checkbox" name="needs" value={m.name} className="size-4 accent-[#15233f]" />
+              {m.name}
             </label>
           ))}
         </div>

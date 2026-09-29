@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/buttons";
 import { PageIntro } from "@/components/page-intro";
-import { faqs, modules, plans } from "@/lib/content";
+import { faqs, plans } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Plans priced by company size and the frameworks you need. Every plan includes every integration.",
+  description: "DPDP compliance plans priced by how many people's data you hold. Every plan includes every integration.",
 };
 
 export default function PricingPage() {
-  const addOns = modules.filter((m) => m.plan === "Add-on");
   return (
     <>
       <PageIntro title="Plans that match where you are">
-        <p>Pricing depends on your headcount and how many frameworks you need. Every plan includes every integration. We&apos;ll send a quote after a short call.</p>
+        <p>Pricing depends on how many people's personal data you hold. Every plan includes every integration. We&apos;ll send a quote after a short call.</p>
       </PageIntro>
       <section className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid border-t-2 border-ink md:grid-cols-3">
@@ -21,7 +20,7 @@ export default function PricingPage() {
             <div key={p.name} className={`flex flex-col border-b border-rule py-8 md:border-b-0 md:px-8 md:first:pl-0 ${i > 0 ? "md:border-l" : ""}`}>
               <h2 className="text-3xl font-bold tracking-[-0.02em]">{p.name}</h2>
               <p className="mt-1 text-ink-soft">{p.for}</p>
-              <p className="mt-5 font-display text-xl font-semibold">{p.frameworks}</p>
+              <p className="mt-5 font-display text-xl font-semibold">{p.scope}</p>
               <ul className="mt-5 space-y-2.5">
                 {p.includes.map((f) => (
                   <li key={f} className="flex gap-3">
@@ -41,20 +40,6 @@ export default function PricingPage() {
           ))}
         </div>
 
-        <div className="mt-20 grid gap-8 md:grid-cols-[1fr_1.6fr]">
-          <div>
-            <h2 className="text-3xl font-bold tracking-[-0.02em]">DPDP add-ons</h2>
-            <p className="mt-2 text-ink-soft">Add them to any plan, or buy them on their own if the DPDP Act is all you need right now.</p>
-          </div>
-          <ul className="border-t border-rule">
-            {addOns.map((m) => (
-              <li key={m.name} className="grid gap-1 border-b border-rule py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
-                <span className="font-semibold">{m.name}</span>
-                <span className="text-ink-soft">{m.summary}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
 
         <div className="mt-20 grid gap-8 md:grid-cols-[1fr_1.6fr]">
           <h2 className="text-3xl font-bold tracking-[-0.02em]">Questions buyers ask</h2>

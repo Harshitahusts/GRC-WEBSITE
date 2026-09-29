@@ -1,9 +1,9 @@
 // Site-wide settings. Change the brand, contact details and form endpoint here.
 export const site = {
   name: "GRC-Flow",
-  tagline: "Compliance automation for SOC 2, ISO 27001 and India's DPDP Act",
+  tagline: "DPDP Act compliance for Indian businesses",
   description:
-    "GRC-Flow connects to your cloud, code and HR tools, checks your controls around the clock, and files the evidence against SOC 2, ISO 27001, the DPDP Act, GDPR, HIPAA and more.",
+    "GRC-Flow maps your personal data, runs consent, notices and rights requests, and checks your systems every hour against the Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025.",
   url: "https://grc-flow.com",
   email: "hello@grc-flow.com",
   // POST endpoint for the demo form (e.g. a Brevo or Formspree form URL).

@@ -1,56 +1,43 @@
 # Competitor features to cover in GRC-Flow
 
-Reference list of what Sprinto and DPDP.ai offer, so GRC-Flow's product and site cover the same ground.
+Reference list of what DPDP.ai offers, so GRC-Flow's product and site cover the same ground.
 
 **Source note:** Sprinto's site blocks automated access (Cloudflare), and DPDP.ai's page could not be parsed from this environment. The lists below come from general public knowledge of both products, not a fresh read of their sites. Check them against the live sites before relying on them.
 
-## Sprinto (compliance automation, global frameworks)
+## Scope
 
-| Feature | GRC-Flow equivalent |
-|---|---|
-| Automated evidence collection | Platform: Evidence collected for you |
-| Continuous control monitoring | Platform: Continuous control monitoring |
-| Multi-framework mapping (SOC 2, ISO 27001, GDPR, HIPAA, PCI DSS, ISO 42001, NIST CSF, CCPA) | Platform: One control, many frameworks |
-| 200+ integrations (cloud, code, HRMS, IdP, MDM, ticketing) | Integrations page (33 listed so far) |
-| Policy templates and employee acceptance tracking | Platform: Policy library |
-| Security awareness training | Module: Security Training |
-| Employee onboarding and offboarding checks | Platform: Joiners and leavers |
-| Device monitoring agent | Module: Device Agent |
-| Access reviews | Module: Access Reviews |
-| Vendor risk management | Module: Vendor Risk |
-| Risk register and assessments | Platform: Risk register |
-| Auditor dashboard | Platform: Auditor portal |
-| Trust center | Module: Trust Center |
-| AI security questionnaire answers | Module: Questionnaire Autofill |
-| Vulnerability management via scanners | Integrations: Snyk, Wiz, CrowdStrike |
-| Incident management | Module: Breach Response |
-
-Not yet covered: NIST CSF and CCPA framework rows, auditor marketplace or partner directory, a "compliance in X weeks" timeline page.
+GRC-Flow is now DPDP-only. Other frameworks (SOC 2, ISO 27001, GDPR, HIPAA and so on) and Sprinto-style multi-framework features were removed from the site on request. They can be revisited later.
 
 ## DPDP.ai (India's Digital Personal Data Protection Act, 2023)
 
 | Feature | GRC-Flow equivalent |
 |---|---|
-| Consent notices in English + 22 scheduled languages (§5) | Module: DPDP Consent Manager |
-| Consent capture, ledger and withdrawal (§6) | Module: DPDP Consent Manager |
-| Cookie consent | Module: DPDP Consent Manager |
+| Consent notices in English + 22 scheduled languages (§5) | Module: Notice Builder |
+| Consent capture, ledger and withdrawal (§6) | Module: Consent Manager |
+| Cookie consent | Module: Consent Manager |
 | Data principal rights: access, correction, erasure, nomination, grievance (§11–14) | Module: Rights Request Desk |
 | Personal data discovery and mapping | Module: Data Discovery |
-| Retention and erasure schedules (§8(7)) | Module: Data Discovery |
+| Retention and erasure schedules (§8(7)) | Module: Retention and Erasure |
 | Breach intimation to the Data Protection Board (§8(6)) | Module: Breach Response |
-| Children's data and verifiable parental consent (§9) | Homepage DPDP table (no dedicated module yet) |
-| DPIA and audits for Significant Data Fiduciaries (§10) | Not yet covered |
-| Integration with registered Consent Managers | Not yet covered |
-| DPDP gap assessment | Not yet covered |
+| Children's data and verifiable parental consent (§9) | Module: Children's Data |
+| DPIA and audits for Significant Data Fiduciaries (§10) | Module: DPIA and Audit |
+| Integration with registered Consent Managers | Consent Manager ("ready to connect") |
+| DPDP gap assessment | Platform: DPDP gap assessment |
 
 ## Claims on the site to confirm before launch
 
-These are written as product facts but are placeholders until the product team confirms them:
+Legal facts (have counsel check):
 
-- Checks run every hour; integrations use read-only access
-- 25+ policy templates
-- Data stored in AWS Mumbai with EU and US regions on request
-- DPDP modules can be bought without a plan
-- Module-to-plan split on the pricing page
-- Beta labels on greytHR, Wiz and Zoho Projects
-- Demo promise: we connect one of your tools in the call; reply within one working day
+- Timeline: Act passed Aug 2023; Rules notified Nov 2025; Consent Manager registration Nov 2026; core duties enforceable May 2027
+- Section and Rule numbers on every check, duty and module (Rule 3 notice, Rule 6 security and one-year logs, Rule 7 breach, Rule 8 erasure, Rule 10 children, Rule 13 SDFs)
+- Penalty amounts from the Schedule (₹250 / 200 / 200 / 150 / 50 crore)
+- Startup exemption wording in the FAQ
+
+Product facts (placeholders until the product team confirms):
+
+- Checks run every hour; integrations are read-only except erasure and consent withdrawal
+- Data stored in India on AWS Mumbai
+- Plan limits (1 lakh / 50 lakh data principals) and which modules sit in which plan
+- Beta labels on LeadSquared, WebEngage, Gupshup and greytHR
+- Notice translations in all 22 scheduled languages; training in English and Hindi
+- Demo promise: gap assessment in 30 minutes; reply within one working day

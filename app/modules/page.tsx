@@ -5,19 +5,19 @@ import { modules } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Modules",
-  description: "Add-on modules for DPDP consent, rights requests, data discovery, breach response, vendor risk, trust center and more.",
+  description: "DPDP modules for consent, notices, rights requests, data discovery, retention, breach response, children's data, processors, training and DPIAs.",
 };
 
 function planLabel(plan: string) {
-  return plan === "Add-on" ? "Add-on for any plan" : `Included in ${plan} and above`;
+  return plan === "Enterprise" ? "Included in Enterprise" : `Included in ${plan} and above`;
 }
 
 export default function ModulesPage() {
   return (
     <>
-      <PageIntro title="Modules that plug into your controls">
+      <PageIntro title="A module for each duty the Act sets">
         <p>
-          Every module reads from and writes to the same controls, evidence and people as the core platform, so nothing gets tracked twice. The DPDP modules can also run on their own.
+          Every module shares the same data map, evidence register and people as the core platform, so nothing gets tracked twice.
         </p>
       </PageIntro>
       <section className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -45,7 +45,7 @@ export default function ModulesPage() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-sm text-ink-soft">Helps with {m.helps.join(", ")}</p>
+                <p className="mt-5 text-sm text-ink-soft">DPDP reference: {m.refs.join(", ")}</p>
               </div>
             </article>
           ))}

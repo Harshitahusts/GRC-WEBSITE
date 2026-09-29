@@ -1,6 +1,6 @@
 # GRC-Flow website
 
-Marketing site for GRC-Flow, built with Next.js 15 and Tailwind CSS 4.
+Marketing site for GRC-Flow, DPDP Act compliance software for Indian businesses. Built with Next.js 15 and Tailwind CSS 4.
 
 ```bash
 npm install
@@ -11,10 +11,10 @@ npm run build   # production build
 ## Where things live
 
 - `lib/site.ts`: brand name, contact email, demo form endpoint
-- `lib/content.ts`: all copy (frameworks, checks, platform features, modules, integrations, plans, FAQs)
+- `lib/content.ts`: all copy (checks, timeline, penalties, DPDP duties, platform features, modules, integrations, plans, FAQs)
 - `app/`: pages (`/`, `/platform`, `/modules`, `/integrations`, `/pricing`, `/demo`)
 - `components/`: shared UI; `ledger.tsx` is the homepage hero
-- `docs/competitor-features.md`: Sprinto and DPDP.ai feature coverage, plus claims to confirm before launch
+- `docs/competitor-features.md`: DPDP.ai feature coverage, plus claims to confirm before launch
 
 To add an integration or module, add an entry in `lib/content.ts`; the pages pick it up.
 
