@@ -12,7 +12,7 @@ export default function DemoPage() {
   return (
     <>
       <PageIntro title="Book a demo">
-        <p>In 30 minutes we&apos;ll look at the frameworks you need, connect one of your tools if you like, and show you what passes today.</p>
+        <p>In 30 minutes we run the DPDP gap assessment with you and show what your business needs to fix first.</p>
       </PageIntro>
       <section className="mx-auto max-w-6xl px-4 sm:px-6">
         <Suspense>

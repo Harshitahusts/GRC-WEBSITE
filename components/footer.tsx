@@ -29,7 +29,7 @@ export function Footer() {
         </div>
       </div>
       <p className="mx-auto max-w-6xl px-4 pb-8 text-sm text-ink-soft sm:px-6">
-        © {new Date().getFullYear()} {site.name}. SOC 2 reports are issued by independent CPA firms and ISO certificates by accredited bodies; {site.name} prepares you for both.
+        © {new Date().getFullYear()} {site.name}. {site.name} is compliance software, not legal advice. Talk to your lawyer about how the DPDP Act applies to you.
       </p>
     </footer>
   );
