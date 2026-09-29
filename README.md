@@ -4,7 +4,7 @@ Marketing site for GRC-Flow, built with Next.js 15 and Tailwind CSS 4.
 
 ```bash
 npm install
-npm run dev     # http://localhost:3000
+npm run dev     # http://localhost:3000 (on Windows, double-click start.bat)
 npm run build   # production build
 ```
 
