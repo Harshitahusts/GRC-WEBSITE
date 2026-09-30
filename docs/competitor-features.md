@@ -24,20 +24,25 @@ GRC-Flow is now DPDP-only. Other frameworks (SOC 2, ISO 27001, GDPR, HIPAA and s
 | Integration with registered Consent Managers | Consent Manager ("ready to connect") |
 | DPDP gap assessment | Platform: DPDP gap assessment |
 
+## Source of truth: the GRC agent app
+
+Since the website redesign, product copy comes from the app itself
+([Harshitahusts/GRC-Ai](https://github.com/Harshitahusts/GRC-Ai)): its README, connector
+catalogue (`src/grc_agent/connectors/catalog.py`), demo tenant and DPDPA docs. Features the
+app doesn't have yet (Consent Manager with 22-language notices, CRM integrations and so on)
+are no longer claimed on the site. Only GitHub and AWS are shown as live connectors.
+
 ## Claims on the site to confirm before launch
 
-Legal facts (have counsel check):
+Legal facts (from the app's own DPDPA docs; have counsel check):
 
-- Timeline: Act passed Aug 2023; Rules notified Nov 2025; Consent Manager registration Nov 2026; core duties enforceable May 2027
-- Section and Rule numbers on every check, duty and module (Rule 3 notice, Rule 6 security and one-year logs, Rule 7 breach, Rule 8 erasure, Rule 10 children, Rule 13 SDFs)
-- Penalty amounts from the Schedule (₹250 / 200 / 200 / 150 / 50 crore)
-- Startup exemption wording in the FAQ
+- Timeline: assent 11 Aug 2023; Rules notified Nov 2025; Consent Managers Nov 2026; main duties 13 May 2027
+- Penalties: ₹250 / 200 / 200 / 150 / 50 crore
+- Rule 14(3) 90-day response clock and Rule 7(2)(b) 72-hour detailed breach report
 
-Product facts (placeholders until the product team confirms):
+Commercial placeholders (not in the app; decide before launch):
 
-- Checks run every hour; integrations are read-only except erasure and consent withdrawal
-- Data stored in India on AWS Mumbai
-- Plan limits (1 lakh / 50 lakh data principals) and which modules sit in which plan
-- Beta labels on LeadSquared, WebEngage, Gupshup and greytHR
-- Notice translations in all 22 scheduled languages; training in English and Hindi
-- Demo promise: gap assessment in 30 minutes; reply within one working day
+- Plans: Solo (1 seat, 5 active engagements), Team (10 seats), Firm (unlimited, self-hosted)
+- Hosting: a hosted SaaS offer. The app today runs locally or with Docker
+- Demo promise: reply within one working day
+- Brand: the site says GRC-Flow; the app says GRC agent

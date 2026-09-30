@@ -1,165 +1,201 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/buttons";
-import { Ledger } from "@/components/ledger";
-import { appliesTo, dpdpDuties, heroChecks, integrationCategories, integrations, modules, penalties, steps, timeline } from "@/lib/content";
+import { DashboardPreview } from "@/components/demo/preview";
+import { Icon } from "@/components/icon";
+import { analystAnswers } from "@/lib/demo-data";
+import { areas, audiences, detectors, discoveryPromises, documentsDrafted, heroPoints, penalties, timeline, workflow } from "@/lib/content";
+
+const sample = analystAnswers[1];
 
 export default function Home() {
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-14 pb-20 sm:px-6 md:pt-20">
-        <div className="grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-end">
-          <h1 className="text-[2.75rem] leading-[1.02] font-bold tracking-[-0.03em] sm:text-[3.5rem] lg:text-display">
-            Know where you stand on the DPDP Act, every hour.
-          </h1>
-          <div className="md:pb-2">
-            <p className="text-lg leading-relaxed text-ink-soft">
-              GRC-Flow maps the personal data you hold, runs your notices, consent and rights requests, and checks your systems against the Act and the DPDP Rules around the clock.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <ButtonLink href="/demo">Book a demo</ButtonLink>
-              <ButtonLink href="/platform" variant="plain">See how it works</ButtonLink>
-            </div>
-          </div>
-        </div>
-        <div className="mt-12">
-          <Ledger checks={heroChecks} />
-        </div>
-      </section>
-
-      <section className="border-y border-rule bg-paper-deep/50">
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1fr_1.2fr]">
+      <section className="night">
+        <div className="mx-auto grid max-w-[1240px] gap-12 px-4 py-14 sm:px-8 md:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <h2 className="text-4xl font-bold tracking-[-0.02em]">The deadline is May 2027</h2>
-            <p className="mt-3 text-lg text-ink-soft">
-              The Rules give businesses 18 months to get ready. Mapping your data and rebuilding consent usually takes most of that.
-            </p>
-          </div>
-          <ol className="relative border-l-2 border-ink pl-8">
-            {timeline.map((t, i) => (
-              <li key={t.when} className="relative pb-7 last:pb-0">
-                <span
-                  className={`absolute top-1 -left-[2.55rem] size-4 rounded-full border-2 border-ink ${i === timeline.length - 1 ? "bg-ink" : "bg-paper"}`}
-                  aria-hidden
-                />
-                <p className="font-display text-lg font-semibold">{t.when}</p>
-                <p className="mt-1 text-ink-soft">{t.what}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <h2 className="max-w-2xl text-4xl font-bold tracking-[-0.02em]">Who the Act applies to</h2>
-        <dl className="mt-10 border-t border-rule">
-          {appliesTo.map((a) => (
-            <div key={a.who} className="grid gap-2 border-b border-rule py-5 md:grid-cols-[1fr_1.4fr] md:gap-10">
-              <dt className="font-display text-xl font-semibold">{a.who}</dt>
-              <dd className="text-ink-soft">{a.detail}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <section className="bg-ink text-paper">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <div className="grid gap-6 md:grid-cols-[1fr_1fr] md:items-end">
-            <h2 className="text-4xl font-bold tracking-[-0.02em] sm:text-5xl">What the Act asks, section by section</h2>
-            <p className="text-lg text-paper/75">Each duty below is a feature in GRC-Flow, with its own checks and records.</p>
-          </div>
-          <table className="mt-12 w-full border-collapse text-left">
-            <thead className="sr-only md:not-sr-only">
-              <tr className="border-b border-paper/25 text-sm text-paper/60">
-                <th scope="col" className="py-3 pr-6 font-normal">Section</th>
-                <th scope="col" className="py-3 pr-6 font-normal">What the Act asks</th>
-                <th scope="col" className="py-3 font-normal">How GRC-Flow handles it</th>
-              </tr>
-            </thead>
-            <tbody>
-              {dpdpDuties.map((d) => (
-                <tr key={d.section} className="grid border-b border-paper/15 py-4 md:table-row md:py-0">
-                  <td className="py-1 pr-6 font-display text-lg font-semibold whitespace-nowrap md:py-5 md:align-top">{d.section}</td>
-                  <td className="py-1 pr-6 font-medium md:w-[38%] md:py-5 md:align-top">{d.duty}</td>
-                  <td className="py-1 text-paper/75 md:py-5 md:align-top">{d.how}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-[1fr_1.4fr]">
-          <div>
-            <h2 className="text-4xl font-bold tracking-[-0.02em]">What getting it wrong costs</h2>
-            <p className="mt-3 text-lg text-ink-soft">Maximum penalties per instance, set out in the Schedule to the Act. The Data Protection Board decides the amount.</p>
-          </div>
-          <dl className="border-t-2 border-ink">
-            {penalties.map((p) => (
-              <div key={p.for} className="grid grid-cols-[8.5rem_1fr] items-baseline gap-4 border-b border-rule py-4 sm:grid-cols-[11rem_1fr]">
-                <dt className="font-display text-2xl font-bold tracking-[-0.02em] sm:text-3xl">{p.amount}</dt>
-                <dd className="text-ink-soft">{p.for}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      <section className="border-y border-rule bg-paper-deep/50">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <h2 className="max-w-2xl text-4xl font-bold tracking-[-0.02em]">From first login to DPDP-ready</h2>
-          <ol className="mt-10 grid gap-10 md:grid-cols-4 md:gap-6">
-            {steps.map((step, i) => (
-              <li key={step.title} className="border-t-2 border-ink pt-4">
-                <span className="font-display text-3xl font-bold text-ink-soft/60" aria-hidden>{i + 1}</span>
-                <h3 className="mt-2 text-xl font-semibold">{step.title}</h3>
-                <p className="mt-2 text-ink-soft">{step.body}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div>
-            <h2 className="text-4xl font-bold tracking-[-0.02em]">Modules for each duty</h2>
-            <p className="mt-3 text-lg text-ink-soft">Start with consent, notices and rights requests. Add the rest as your data and risk grow.</p>
-            <ul className="mt-8 border-t border-rule">
-              {modules.slice(0, 7).map((m) => (
-                <li key={m.name} className="flex items-baseline justify-between gap-4 border-b border-rule py-3.5">
-                  <span className="font-semibold">{m.name}</span>
-                  <span className="text-right text-sm text-ink-soft">{m.refs.join(", ")}</span>
+            <p className="eyebrow">India&apos;s DPDP Act 2023 &amp; Rules 2025</p>
+            <h1 className="mt-3 max-w-[30rem] text-[2.1rem] leading-[1.15] font-bold text-white sm:text-[2.6rem]">
+              DPDPA readiness assessments, drafted in hours, verified by you.
+            </h1>
+            <ul className="mt-6 max-w-[30rem] space-y-3">
+              {heroPoints.map((p) => (
+                <li key={p.lead} className="flex gap-2.5 text-night-text">
+                  <Icon name="check" className="mt-0.5 size-5 text-night-check" />
+                  <span><strong className="font-[650] text-white">{p.lead}</strong> {p.rest}</span>
                 </li>
               ))}
             </ul>
-            <ButtonLink href="/modules" variant="plain" className="mt-6">All {modules.length} modules</ButtonLink>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink href="/demo">Try the live demo</ButtonLink>
+              <ButtonLink href="/contact" variant="secondary">Book a demo</ButtonLink>
+            </div>
           </div>
-          <div>
-            <h2 className="text-4xl font-bold tracking-[-0.02em]">Works with the tools that hold your data</h2>
-            <p className="mt-3 text-lg text-ink-soft">Including the CRMs, messaging and HR systems Indian teams run on.</p>
-            <dl className="mt-8 border-t border-rule">
-              {integrationCategories.slice(0, 5).map((cat) => (
-                <div key={cat} className="grid grid-cols-[8.5rem_1fr] gap-4 border-b border-rule py-3.5">
-                  <dt className="text-sm text-ink-soft">{cat}</dt>
-                  <dd>{integrations.filter((i) => i.category === cat).map((i) => i.name).join(", ")}</dd>
-                </div>
-              ))}
-            </dl>
-            <ButtonLink href="/integrations" variant="plain" className="mt-6">All {integrations.length} integrations</ButtonLink>
+          <Link href="/demo" aria-label="Open the live demo dashboard" className="block rounded-xl transition-transform hover:-translate-y-0.5">
+            <DashboardPreview />
+          </Link>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
+        <p className="eyebrow">How an engagement runs</p>
+        <h2 className="mt-2 max-w-2xl text-3xl font-bold sm:text-[2rem]">Four steps from first question to a delivered assessment</h2>
+        <ol className="mt-10 grid gap-4 md:grid-cols-4">
+          {workflow.map((step, i) => (
+            <li key={step.title} className="card relative p-5">
+              <span className={`grid size-8 place-items-center rounded-full text-sm font-bold ${i === workflow.length - 1 ? "bg-pass-bg text-pass" : "bg-accent-soft text-accent"}`}>{i + 1}</span>
+              <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
+              <p className="mt-1.5 text-[0.92rem] text-fg-2">{step.body}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="border-y border-line bg-surface">
+        <div className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
+          <p className="eyebrow">Around each engagement</p>
+          <h2 className="mt-2 max-w-2xl text-3xl font-bold sm:text-[2rem]">The registers the Act expects you to keep</h2>
+          <p className="mt-3 max-w-2xl text-lg text-fg-2">
+            Every record has an owner, a due date, a status that won&apos;t move without the facts it needs, a full history and evidence attached.
+          </p>
+          <div className="mt-10 grid gap-8 lg:grid-cols-3">
+            {areas.map((area) => (
+              <div key={area.name}>
+                <h3 className="flex items-center gap-2 text-lg font-semibold">
+                  <span className="grid size-8 place-items-center rounded-[8px] bg-accent-soft text-accent"><Icon name={area.icon} className="size-[18px]" /></span>
+                  {area.name}
+                </h3>
+                <dl className="mt-4 divide-y divide-line border-y border-line">
+                  {area.items.map((item) => (
+                    <div key={item.title} className="py-3">
+                      <dt className="font-semibold">{item.title}</dt>
+                      <dd className="mt-0.5 text-[0.92rem] text-fg-2">{item.body}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-col gap-6 rounded-lg border-2 border-ink p-8 md:flex-row md:items-center md:justify-between md:p-12">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-bold tracking-[-0.02em] sm:text-4xl">Find your DPDP gaps in 30 minutes</h2>
-            <p className="mt-3 text-lg text-ink-soft">
-              In a demo we run the gap assessment with you and show what your business needs to fix first. Or read the <Link href="/platform" className="underline decoration-rule decoration-2 underline-offset-4 hover:decoration-ink">platform overview</Link>.
-            </p>
+      <section className="mx-auto grid max-w-[1240px] gap-10 px-4 py-16 sm:px-8 md:py-20 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p className="eyebrow">GRC Analyst</p>
+          <h2 className="mt-2 text-3xl font-bold sm:text-[2rem]">Ask about any client. Get an answer with the provision behind it.</h2>
+          <p className="mt-3 text-lg text-fg-2">
+            The Analyst reads the workspace&apos;s engagements, findings, risks, evidence and data flows, and follows an auditor&apos;s workflow: planning, fieldwork, evidence, risk and reporting. It can&apos;t change anything.
+          </p>
+          <ButtonLink href="/demo#analyst" variant="secondary" className="mt-6">Try the Analyst</ButtonLink>
+        </div>
+        <div className="card space-y-3 p-5">
+          <p className="ml-auto w-fit max-w-[85%] rounded-[10px] rounded-br-sm bg-accent px-3.5 py-2 text-white">{sample.q}</p>
+          <div className="flex gap-3">
+            <span className="grid size-8 shrink-0 place-items-center rounded-full bg-accent-soft text-accent"><Icon name="spark" className="size-4" /></span>
+            <div className="space-y-2 rounded-[10px] rounded-tl-sm border border-line bg-surface-2 px-4 py-3 text-[0.92rem]">
+              {sample.a.map((p) => <p key={p}>{p}</p>)}
+              <p className="flex flex-wrap gap-1.5 pt-1">
+                {sample.cites.map((c) => (
+                  <span key={c} className="badge bg-info-bg text-info"><Icon name="book" className="size-3" />{c}</span>
+                ))}
+              </p>
+            </div>
           </div>
-          <ButtonLink href="/demo" className="shrink-0">Book a demo</ButtonLink>
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-surface">
+        <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-16 sm:px-8 md:py-20 lg:grid-cols-2">
+          <div>
+            <p className="eyebrow">Personal data discovery</p>
+            <h2 className="mt-2 text-3xl font-bold sm:text-[2rem]">Find the personal data in a client export</h2>
+            <p className="mt-3 text-lg text-fg-2">
+              Upload a CSV or JSON of customers, employees or patients. The scan flags fields that look like personal data, and a person confirms or rejects each one before it enters the data inventory.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="What the scanner detects">
+              {detectors.map((d) => <li key={d} className="badge bg-accent-soft text-info">{d}</li>)}
+            </ul>
+          </div>
+          <div className="card p-6">
+            <h3 className="flex items-center gap-2 font-semibold"><Icon name="shield" className="text-accent" /> Private by design</h3>
+            <ul className="mt-4 space-y-3">
+              {discoveryPromises.map((p) => (
+                <li key={p} className="flex gap-2.5 text-fg-2">
+                  <Icon name="check" className="mt-0.5 size-5 text-good" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-[1240px] gap-10 px-4 py-16 sm:px-8 md:py-20 lg:grid-cols-[1fr_1.2fr]">
+        <div>
+          <p className="eyebrow">Documents</p>
+          <h2 className="mt-2 text-3xl font-bold sm:text-[2rem]">Drafted for you, signed off by a person</h2>
+          <p className="mt-3 text-lg text-fg-2">Each document is built from the intake and findings. Nothing can be downloaded as .docx until someone has reviewed it.</p>
+        </div>
+        <ul className="card divide-y divide-line p-0">
+          {documentsDrafted.map((d) => (
+            <li key={d.name} className="flex items-center gap-3 px-5 py-3.5">
+              <Icon name="pen" className="size-5 text-accent" />
+              <span className="flex-1">
+                <strong className="block">{d.name}</strong>
+                <span className="text-[0.88rem] text-muted">{d.note}</span>
+              </span>
+              <Icon name="download" className="size-4 text-muted" />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="night">
+        <div className="mx-auto grid max-w-[1240px] gap-12 px-4 py-16 sm:px-8 md:py-20 lg:grid-cols-2">
+          <div>
+            <p className="eyebrow">Why now</p>
+            <h2 className="mt-2 text-3xl font-bold text-white sm:text-[2rem]">The main duties apply from 13 May 2027</h2>
+            <ol className="mt-8 space-y-5 border-l-2 border-white/20 pl-6">
+              {timeline.map((t) => (
+                <li key={t.when} className="relative">
+                  <span className="absolute top-1.5 -left-[1.95rem] size-3 rounded-full border-2 border-night-check bg-night" aria-hidden />
+                  <p className="font-semibold text-white">{t.when}</p>
+                  <p className="text-night-text">{t.what}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-white">Maximum penalty per instance</h3>
+            <dl className="mt-4 divide-y divide-white/10 border-y border-white/10">
+              {penalties.map((p) => (
+                <div key={p.for} className="grid grid-cols-[8rem_1fr] items-baseline gap-4 py-3">
+                  <dt className="text-xl font-bold whitespace-nowrap text-white">{p.amount}</dt>
+                  <dd className="text-night-text">{p.for}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
+        <div className="grid gap-4 md:grid-cols-2">
+          {audiences.map((a) => (
+            <div key={a.who} className="card p-6">
+              <h2 className="text-xl font-semibold">{a.who}</h2>
+              <p className="mt-2 text-fg-2">{a.detail}</p>
+            </div>
+          ))}
+        </div>
+        <div className="card mt-4 flex flex-col gap-5 p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="text-2xl font-bold">See it with sample clients</h2>
+            <p className="mt-1 text-fg-2">Six clients at every stage, from intake to delivered. No sign-up needed.</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <ButtonLink href="/demo">Try the live demo</ButtonLink>
+            <ButtonLink href="/contact" variant="secondary">Book a demo</ButtonLink>
+          </div>
         </div>
       </section>
     </>
