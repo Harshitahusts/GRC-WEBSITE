@@ -1,9 +1,9 @@
 // Site-wide settings. Change the brand, contact details and form endpoint here.
 export const site = {
   name: "GRC-Flow",
-  tagline: "DPDP Act compliance for Indian businesses",
+  tagline: "DPDPA readiness assessments, drafted in hours, verified by you",
   description:
-    "GRC-Flow maps your personal data, runs consent, notices and rights requests, and checks your systems every hour against the Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025.",
+    "A workspace for running DPDP Act readiness assessments: guided intake, cited findings, reviewed documents, a risk register, data-flow maps and a GRC Analyst that cites the Act and Rules.",
   url: "https://grc-flow.com",
   email: "hello@grc-flow.com",
   // POST endpoint for the demo form (e.g. a Brevo or Formspree form URL).
@@ -12,8 +12,8 @@ export const site = {
 };
 
 export const nav = [
-  { href: "/platform", label: "Platform" },
-  { href: "/modules", label: "Modules" },
-  { href: "/integrations", label: "Integrations" },
+  { href: "/product", label: "Product" },
+  { href: "/demo", label: "Live demo" },
+  { href: "/connectors", label: "Connectors" },
   { href: "/pricing", label: "Pricing" },
 ];
