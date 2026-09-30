@@ -9,17 +9,23 @@ if errorlevel 1 (
   exit /b 1
 )
 
-if not exist node_modules (
-  echo Installing dependencies, this takes a minute the first time...
-  call npm install
-  if errorlevel 1 (
-    echo npm install failed. Check the messages above.
-    pause
-    exit /b 1
-  )
+rem Keep dependencies in step with package.json after every git pull.
+echo Checking dependencies...
+call npm install --no-audit --no-fund
+if errorlevel 1 (
+  echo npm install failed. Check the messages above.
+  pause
+  exit /b 1
+)
+
+rem Clear the build cache. A cache left over from an older version of the
+rem site causes errors like "ENOENT ... .next\server\app\page.js".
+if exist .next (
+  echo Clearing the old build cache...
+  rmdir /s /q .next
 )
 
 echo Starting GRC-Flow at http://localhost:3000 - close this window to stop it.
-start "" cmd /c "timeout /t 6 /nobreak >nul && start http://localhost:3000"
+start "" cmd /c "timeout /t 8 /nobreak >nul && start http://localhost:3000"
 call npm run dev
 pause
