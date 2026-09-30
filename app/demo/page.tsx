@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { DemoApp } from "@/components/demo/demo-app";
+import { DemoPage } from "@/components/demo/demo-page";
 
 export const metadata: Metadata = {
   title: "Live demo",
-  description: "Click through a sample DPDPA workspace: dashboard, engagement findings, risk register, GRC Analyst, data flows and connectors.",
+  description: "Try the real GRC agent app with a sample workspace, or click through a guided tour of the dashboard, engagements, risk register, GRC Analyst, data flows and connectors.",
 };
 
-export default function DemoPage() {
-  return <DemoApp />;
+export default function Page() {
+  return <DemoPage />;
 }
