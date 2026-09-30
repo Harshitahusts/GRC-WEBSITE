@@ -36,7 +36,7 @@ export function Sidebar({ current, go, desktop = false }: { current: View; go?: 
     <aside
       className={`bg-side text-side-text ${d(
         "flex h-full flex-col gap-4 px-3 py-4",
-        "flex flex-wrap items-center gap-x-3 gap-y-1 px-3 py-2 lg:sticky lg:top-0 lg:h-screen lg:flex-col lg:flex-nowrap lg:items-stretch lg:gap-4 lg:py-4",
+        "flex flex-wrap items-center gap-x-3 gap-y-1 px-3 py-2 lg:sticky lg:top-14 lg:h-[calc(100vh-3.5rem)] lg:flex-col lg:flex-nowrap lg:items-stretch lg:gap-4 lg:py-4",
       )}`}
     >
       <span className={`px-1.5 ${d("pb-2", "lg:pb-2")}`}><Logo tone="dark" /></span>
@@ -71,7 +71,7 @@ export function Sidebar({ current, go, desktop = false }: { current: View; go?: 
 
 function SignIn({ onEnter }: { onEnter: () => void }) {
   return (
-    <div className="grid min-h-screen lg:grid-cols-[1.1fr_1fr]">
+    <div className="grid min-h-[calc(100vh-3.5rem)] lg:grid-cols-[1.1fr_1fr]">
       <section className="night flex flex-col justify-between gap-8 p-6 sm:p-12">
         <Link href="/" aria-label={`Back to ${site.name}`}><Logo tone="dark" /></Link>
         <div>
@@ -123,7 +123,7 @@ function SignIn({ onEnter }: { onEnter: () => void }) {
   );
 }
 
-export function DemoApp() {
+export function GuidedTour() {
   const [signedIn, setSignedIn] = useState(false);
   const [view, setView] = useState<View>("dashboard");
 
@@ -151,14 +151,12 @@ export function DemoApp() {
   if (!signedIn) return <SignIn onEnter={() => go("dashboard")} />;
 
   return (
-    <div className="min-h-screen lg:grid lg:grid-cols-[236px_minmax(0,1fr)] lg:bg-[linear-gradient(to_right,var(--color-side)_236px,var(--color-canvas)_236px)]">
+    <div className="min-h-[calc(100vh-3.5rem)] lg:grid lg:grid-cols-[236px_minmax(0,1fr)] lg:bg-[linear-gradient(to_right,var(--color-side)_236px,var(--color-canvas)_236px)]">
       <Sidebar current={view} go={go} />
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-line bg-info-bg px-4 py-2 text-[0.88rem] text-info sm:px-8" role="status">
           <Icon name="info" className="hidden sm:block" />
-          <span className="min-w-0 flex-[1_1_14rem]"><strong>Live demo.</strong> Sample clients and data. Nothing here is real or saved.</span>
-          <Link href="/contact" className="btn btn-primary !px-3 !py-1 text-[0.82rem]">Book a demo</Link>
-          <Link href="/" className="font-semibold hover:underline">Back to site</Link>
+          <span className="min-w-0 flex-[1_1_14rem]"><strong>Guided tour.</strong> A click-through of the app with sample clients. Nothing here is saved.</span>
         </div>
         <main className="@container mx-auto max-w-[1240px] px-4 py-6 sm:px-8 sm:py-7">{views[view](go)}</main>
       </div>
