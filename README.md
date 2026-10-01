@@ -26,6 +26,21 @@ npm run build   # production build
 
 Open the site and the app on the same host name (both `localhost`, or both `127.0.0.1`); the app's sign-in cookie is `SameSite=strict` and won't work inside the page otherwise. When the app is hosted, set `NEXT_PUBLIC_APP_DEMO_URL` (for example `https://demo.grc-flow.com`) before `npm run build`, on the same domain as the website.
 
+## Cookie consent
+
+A consent pop-up (`components/cookie-consent.tsx`) asks first-time visitors to **Reject all**, **Accept all** or **Customise** (strictly necessary, analytics, marketing). The choice is saved for six months in the `grcflow_consent` cookie, and **Cookie settings** in the footer reopens it.
+
+The site sets no analytics or marketing cookies today. When you add a tool, load it only after consent:
+
+```ts
+import { CONSENT_EVENT, hasConsent } from "@/lib/consent";
+
+if (hasConsent("analytics")) loadAnalytics();
+window.addEventListener(CONSENT_EVENT, () => { if (hasConsent("analytics")) loadAnalytics(); });
+```
+
+Changing the categories or what they're used for? Bump `CONSENT_VERSION` in `lib/consent.ts` so everyone is asked again.
+
 When a connector goes live in the app, set `live: true` on it in `lib/content.ts`.
 
 The demo form opens a pre-filled email until `demoFormEndpoint` in `lib/site.ts` is set to a form backend URL (Brevo, Formspree, etc.).
