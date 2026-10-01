@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { openCookieSettings } from "@/lib/consent";
 import { nav, site } from "@/lib/site";
 import { Logo } from "./logo";
 
@@ -30,6 +31,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2">
             <li><Link href="/contact" className="hover:text-white">Book a demo</Link></li>
             <li><a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a></li>
+            <li><button type="button" onClick={openCookieSettings} className="hover:text-white">Cookie settings</button></li>
           </ul>
         </div>
       </div>
