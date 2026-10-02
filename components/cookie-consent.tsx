@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { categories, OPEN_SETTINGS_EVENT, readConsent, saveConsent } from "@/lib/consent";
 import { Icon } from "./icon";
@@ -10,11 +11,17 @@ type Step = "hidden" | "banner" | "customise";
 export function CookieConsent() {
   const [step, setStep] = useState<Step>("hidden");
   const [choice, setChoice] = useState({ analytics: false, marketing: false });
+  // Whether a choice is saved; until mounted we don't know, so nothing renders.
+  const [decided, setDecided] = useState<boolean | null>(null);
   const panel = useRef<HTMLDivElement>(null);
+  const reopen = useRef<HTMLButtonElement>(null);
+  const path = usePathname();
 
   useEffect(() => {
     // Ask only when there's no saved choice for the current categories.
-    if (!readConsent()) setStep("banner");
+    const saved = readConsent();
+    setDecided(!!saved);
+    if (!saved) setStep("banner");
     const open = () => {
       const saved = readConsent();
       setChoice({ analytics: saved?.analytics ?? false, marketing: saved?.marketing ?? false });
@@ -31,10 +38,35 @@ export function CookieConsent() {
 
   function decide(next: { analytics: boolean; marketing: boolean }) {
     saveConsent(next);
+    setDecided(true);
     setStep("hidden");
+    // Hand focus to the corner button so keyboard users don't lose their place.
+    requestAnimationFrame(() => reopen.current?.focus());
   }
 
-  if (step === "hidden") return null;
+  function openSettings() {
+    const saved = readConsent();
+    setChoice({ analytics: saved?.analytics ?? false, marketing: saved?.marketing ?? false });
+    setStep("customise");
+  }
+
+  if (step === "hidden") {
+    if (!decided) return null;
+    // After a choice, a small button stays in the corner to reopen the settings.
+    // On /demo it sits bottom-right so it doesn't cover the app's own sidebar.
+    return (
+      <button
+        ref={reopen}
+        type="button"
+        onClick={openSettings}
+        aria-label="Cookie settings"
+        title="Cookie settings"
+        className={`fixed bottom-4 z-40 grid size-11 place-items-center rounded-full border border-line bg-surface text-accent shadow-float hover:bg-accent-soft ${path.startsWith("/demo") ? "right-4" : "left-4"}`}
+      >
+        <Icon name="cookie" className="size-5" />
+      </button>
+    );
+  }
 
   const all = { analytics: true, marketing: true };
   const none = { analytics: false, marketing: false };
@@ -49,13 +81,16 @@ export function CookieConsent() {
       aria-describedby="cookie-body"
       onKeyDown={(e) => {
         // Escape closes the settings view only once a choice already exists.
-        if (e.key === "Escape" && step === "customise" && readConsent()) setStep("hidden");
+        if (e.key === "Escape" && step === "customise" && readConsent()) {
+          setStep("hidden");
+          requestAnimationFrame(() => reopen.current?.focus());
+        }
       }}
       className="light-ui card fixed inset-x-3 bottom-3 z-50 max-h-[85vh] overflow-y-auto p-5 shadow-float outline-none sm:inset-x-auto sm:bottom-5 sm:left-5 sm:w-[26rem]"
     >
       <div className="flex items-start gap-3">
         <span className="grid size-9 shrink-0 place-items-center rounded-[9px] bg-accent-soft text-accent">
-          <Icon name="shield" className="size-5" />
+          <Icon name="cookie" className="size-5" />
         </span>
         <div className="min-w-0">
           <h2 id="cookie-title" className="text-[1.05rem] font-semibold">
@@ -103,11 +138,7 @@ export function CookieConsent() {
         <button type="button" className="btn" onClick={() => decide(none)}>Reject all</button>
         <button type="button" className="btn" onClick={() => decide(all)}>Accept all</button>
         {step === "banner" ? (
-          <button type="button" className="btn col-span-2" onClick={() => {
-            const saved = readConsent();
-            setChoice({ analytics: saved?.analytics ?? false, marketing: saved?.marketing ?? false });
-            setStep("customise");
-          }}>
+          <button type="button" className="btn col-span-2" onClick={openSettings}>
             <Icon name="sliders" /> Customise
           </button>
         ) : (
