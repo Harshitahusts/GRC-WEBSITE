@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+deploy
+docs
+*.md
+*.bat
+.env*

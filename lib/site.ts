@@ -11,7 +11,7 @@ export const site = {
   demoFormEndpoint: "",
   // The real GRC agent app shown on /demo: its demo workspace, started with
   // start-demo.bat in the GRC-Ai folder (port 8001). Set NEXT_PUBLIC_APP_DEMO_URL
-  // when it's hosted somewhere else, e.g. https://demo.grc-flow.com. Left empty,
+  // when it's hosted somewhere else (deploy/compose.yaml sets https://demo.<domain>). Left empty,
   // the site uses the same host name it was opened on, port 8001, because the
   // app's sign-in cookie only works inside the page when both share a host name.
   appDemoUrl: process.env.NEXT_PUBLIC_APP_DEMO_URL ?? "",
