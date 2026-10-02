@@ -77,7 +77,7 @@ function SignIn({ onEnter }: { onEnter: () => void }) {
         <div>
           <p className="eyebrow">India&apos;s DPDP Act 2023 &amp; Rules 2025</p>
           <h1 className="mt-3 max-w-[26rem] text-[1.6rem] leading-tight font-bold text-white sm:text-[2rem]">
-            DPDPA readiness assessments, drafted in hours, verified by you.
+            DPDPA readiness assessments, drafted for you, verified by you.
           </h1>
           <ul className="mt-5 hidden max-w-[28rem] space-y-3 sm:block">
             {heroPoints.map((p) => (
@@ -158,7 +158,7 @@ export function GuidedTour() {
           <Icon name="info" className="hidden sm:block" />
           <span className="min-w-0 flex-[1_1_14rem]"><strong>Guided tour.</strong> A click-through of the app with sample clients. Nothing here is saved.</span>
         </div>
-        <main className="@container mx-auto max-w-[1240px] px-4 py-6 sm:px-8 sm:py-7">{views[view](go)}</main>
+        <div className="@container mx-auto max-w-[1240px] px-4 py-6 sm:px-8 sm:py-7">{views[view](go)}</div>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ export default function PricingPage() {
   return (
     <>
       <PageHead eyebrow="Pricing" title="Plans for how you run assessments">
-        <p>Priced by seats and engagements. We send a quote after a short call.</p>
+        <p>Priced by seats and engagements. After a short call we send a written quote with the full price.</p>
       </PageHead>
       <section className="mx-auto max-w-[1240px] px-4 py-14 sm:px-8">
         <div className="grid gap-4 md:grid-cols-3">
@@ -37,6 +37,16 @@ export default function PricingPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="card mt-6 flex gap-3 p-5">
+          <Icon name="info" className="mt-0.5 size-5 text-accent" />
+          <div>
+            <h2 className="font-semibold">What you&apos;ll pay</h2>
+            <p className="mt-1 text-fg-2">
+              Your quote shows the full price for your plan, including GST. There are no charges outside the quote, and nothing is charged until you sign. The website and live demo are free to use.
+            </p>
+          </div>
         </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-[1fr_1.6fr]">

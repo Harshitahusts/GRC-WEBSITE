@@ -15,7 +15,7 @@ export default function Home() {
           <div>
             <p className="eyebrow">India&apos;s DPDP Act 2023 &amp; Rules 2025</p>
             <h1 className="mt-3 max-w-[30rem] text-[2.1rem] leading-[1.15] font-bold text-white sm:text-[2.6rem]">
-              DPDPA readiness assessments, drafted in hours, verified by you.
+              DPDPA readiness assessments, drafted for you, verified by you.
             </h1>
             <ul className="mt-6 max-w-[30rem] space-y-3">
               {heroPoints.map((p) => (
