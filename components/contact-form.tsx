@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { plans } from "@/lib/content";
+import Link from "next/link";
 import { site } from "@/lib/site";
 import { Icon } from "./icon";
 
@@ -43,7 +44,7 @@ export function ContactForm() {
         <Icon name="check" className="mt-1 size-6 text-pass" />
         <div>
           <h2 className="text-xl font-bold">Demo requested</h2>
-          <p className="mt-1 text-fg-2">We&apos;ll email you within one working day with times to pick from.</p>
+          <p className="mt-1 text-fg-2">We&apos;ll reply by email to find a time that suits you.</p>
         </div>
       </div>
     );
@@ -60,20 +61,20 @@ export function ContactForm() {
         <input name="email" type="email" required autoComplete="email" className={field} />
       </label>
       <label className="block">
-        <span className={label}>Company</span>
-        <input name="company" required autoComplete="organization" className={field} />
+        <span className={label}>Company <span className="font-normal text-muted">Optional</span></span>
+        <input name="company" autoComplete="organization" className={field} />
       </label>
       <label className="block">
-        <span className={label}>You are</span>
+        <span className={label}>You are <span className="font-normal text-muted">Optional</span></span>
         <select name="role" className={field} defaultValue="">
-          <option value="" disabled>Choose one</option>
+          <option value="">Prefer not to say</option>
           <option>A privacy or GRC consultant</option>
           <option>An in-house compliance team</option>
           <option>Something else</option>
         </select>
       </label>
       <label className="block sm:col-span-2">
-        <span className={label}>Plan you&apos;re considering</span>
+        <span className={label}>Plan you&apos;re considering <span className="font-normal text-muted">Optional</span></span>
         <select name="plan" className={field} defaultValue={plans.some((p) => p.name.toLowerCase() === plan) ? plan : ""}>
           <option value="">Not sure yet</option>
           {plans.map((p) => (
@@ -85,6 +86,24 @@ export function ContactForm() {
         <span className={label}>What would you like to see? <span className="font-normal text-muted">Optional</span></span>
         <textarea name="message" rows={3} className={field} />
       </label>
+      <fieldset className="space-y-2.5 sm:col-span-2">
+        <legend className="sr-only">Consent</legend>
+        <label className="flex items-start gap-2.5 text-[0.92rem]">
+          <input type="checkbox" name="age_confirmed" value="yes" required className="mt-1 size-4 accent-[var(--color-accent)]" />
+          <span>I&apos;m 18 or older.</span>
+        </label>
+        <label className="flex items-start gap-2.5 text-[0.92rem]">
+          <input type="checkbox" name="consent_demo" value="yes" required className="mt-1 size-4 accent-[var(--color-accent)]" />
+          <span>
+            I agree to {site.name} using these details to arrange and follow up on my demo, as described in the{" "}
+            <Link href="/privacy" className="text-accent underline">privacy policy</Link>. I can withdraw this any time.
+          </span>
+        </label>
+        <label className="flex items-start gap-2.5 text-[0.92rem]">
+          <input type="checkbox" name="consent_updates" value="yes" className="mt-1 size-4 accent-[var(--color-accent)]" />
+          <span>Also send me occasional product updates. <span className="text-muted">Optional. Every email has an unsubscribe link.</span></span>
+        </label>
+      </fieldset>
       <div className="sm:col-span-2">
         <button type="submit" disabled={state === "sending"} className="btn btn-primary w-full disabled:opacity-60 sm:w-auto">
           {state === "sending" ? "Requesting demo…" : "Request demo"}

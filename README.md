@@ -10,12 +10,14 @@ npm run build   # production build
 
 ## Where things live
 
-- `lib/site.ts`: brand name, contact email, demo form endpoint
+- `lib/site.ts`: brand name, contact email, form endpoints, and the business details shown in the footer and policies (fill in the `[placeholders]` before launch)
 - `lib/content.ts`: marketing copy (workflow, registers, discovery, documents, connectors, plans, FAQs)
 - `lib/demo-data.ts`: sample workspace for the live demo at `/demo`
-- `app/`: pages (`/`, `/product`, `/demo`, `/connectors`, `/pricing`, `/contact`)
+- `app/`: pages (`/`, `/product`, `/demo`, `/connectors`, `/pricing`, `/contact`) and legal pages (`/privacy`, `/terms`, `/cookies`, `/privacy-request`, `/unsubscribe`, `/accessibility`)
 - `components/`: shared UI; `components/demo/` is the interactive demo (dashboard, engagement, risk register, GRC Analyst, data flows, connectors)
 - `docs/competitor-features.md`: DPDP.ai feature coverage, plus claims to confirm before launch
+- `docs/compliance-checklist.md`: legal pages, consent, accessibility and third-party audit, with the steps left before launch
+- `docs/email-footer.md`, `docs/licenses.md`: unsubscribe footer for emails, and licences for fonts, icons and packages
 
 ## Live demo (`/demo`)
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { categories, OPEN_SETTINGS_EVENT, readConsent, saveConsent } from "@/lib/consent";
 import { Icon } from "./icon";
@@ -62,8 +63,9 @@ export function CookieConsent() {
           </h2>
           <p id="cookie-body" className="mt-1 text-[0.9rem] text-fg-2">
             {step === "banner"
-              ? "We use strictly necessary cookies to run the site. With your consent we'd also use analytics and marketing cookies. You can change this any time from Cookie settings in the footer."
-              : "Pick what you're happy with. Strictly necessary cookies can't be turned off."}
+              ? "We use strictly necessary cookies to run the site. With your consent we'd also use analytics and marketing cookies. You can change this any time from Cookie settings in the footer. "
+              : "Pick what you're happy with. Strictly necessary cookies can't be turned off. "}
+            <Link href="/cookies" className="text-accent underline">Cookie policy</Link>
           </p>
         </div>
       </div>
