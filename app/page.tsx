@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/buttons";
+import { DeadlineClock } from "@/components/deadline-countdown";
 import { DashboardPreview } from "@/components/demo/preview";
 import { Icon } from "@/components/icon";
 import { analystAnswers } from "@/lib/demo-data";
@@ -11,13 +12,20 @@ export default function Home() {
   return (
     <>
       <section className="night">
-        <div className="mx-auto grid max-w-[1240px] gap-12 px-4 py-14 sm:px-8 md:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="mx-auto grid max-w-[1240px] gap-12 px-4 py-14 sm:px-8 md:py-20 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div>
             <p className="eyebrow">India&apos;s DPDP Act 2023 &amp; Rules 2025</p>
             <h1 className="mt-3 max-w-[30rem] text-[2.1rem] leading-[1.15] font-bold text-white sm:text-[2.6rem]">
               DPDPA readiness assessments, drafted for you, verified by you.
             </h1>
-            <ul className="mt-6 max-w-[30rem] space-y-3">
+            <div className="mt-6 max-w-[34rem]">
+              <DeadlineClock />
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink href="/demo">Try the live demo</ButtonLink>
+              <ButtonLink href="/contact" variant="secondary">Book a demo</ButtonLink>
+            </div>
+            <ul className="mt-8 max-w-[30rem] space-y-3">
               {heroPoints.map((p) => (
                 <li key={p.lead} className="flex gap-2.5 text-night-text">
                   <Icon name="check" className="mt-0.5 size-5 text-night-check" />
@@ -25,10 +33,6 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/demo">Try the live demo</ButtonLink>
-              <ButtonLink href="/contact" variant="secondary">Book a demo</ButtonLink>
-            </div>
           </div>
           <Link href="/demo" aria-label="Open the live demo dashboard" className="block rounded-xl transition-transform hover:-translate-y-0.5">
             <DashboardPreview />

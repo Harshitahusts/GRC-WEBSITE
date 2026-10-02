@@ -28,6 +28,10 @@ npm run build   # production build
 
 Open the site and the app on the same host name (both `localhost`, or both `127.0.0.1`); the app's sign-in cookie is `SameSite=strict` and won't work inside the page otherwise. When the app is hosted, set `NEXT_PUBLIC_APP_DEMO_URL` (for example `https://demo.grc-flow.com`) before `npm run build`, on the same domain as the website.
 
+## DPDP deadline countdown
+
+`components/deadline-countdown.tsx` counts down live to **13 May 2027, 00:00 IST** (Asia/Kolkata), when the DPDP Act's main duties apply. It shows as a strip above the header on every page except `/demo`, and as a large clock in the homepage hero. The deadline is fixed in IST, so every visitor sees the same countdown whatever their time zone, and both switch to "The DPDP Act's main duties now apply" once it passes. To change the date, edit `DPDP_DEADLINE` in that file.
+
 ## Cookie consent
 
 A consent pop-up (`components/cookie-consent.tsx`) asks first-time visitors to **Reject all**, **Accept all** or **Customise** (strictly necessary, analytics, marketing). Until they choose, the rest of the site is locked (dimmed, inert, no scrolling); `/cookies`, `/privacy` and `/terms` stay readable so people can check what they're agreeing to. Reject all is always as easy as Accept all, so nobody is forced to accept. The choice is saved for six months in the `grcflow_consent` cookie; the cookie button in the corner and **Cookie settings** in the footer reopen it.
