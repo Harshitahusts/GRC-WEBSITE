@@ -31,8 +31,8 @@ Status of the website (not the app) as of 2 October 2026. Policies are drafts. *
 
 ## Before launch
 
-1. Fill in every `[placeholder]` in `lib/site.ts` → `business`.
-2. Create the `privacy@` and `grievance@` mailboxes (or change the addresses).
+1. Fill in the remaining `[placeholders]` in `lib/site.ts` → `business` (street address, CIN, GSTIN, Grievance Officer name), and confirm the registered name of Suscin Innovation Labs.
+2. Privacy requests and grievances go to talk@grc-flow.com. Make sure someone checks it, since the DPDP Act sets response deadlines.
 3. Have a lawyer review `/privacy`, `/terms` and `/cookies`. Confirm the retention periods and that data is stored in India.
 4. Name your hosting and email providers in the privacy policy.
 5. Confirm the "no charges outside the quote" commitment on `/pricing` and `/terms` matches how you'll bill.

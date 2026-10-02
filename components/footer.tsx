@@ -15,6 +15,9 @@ export function Footer() {
         <div className="max-w-sm">
           <Logo tone="dark" />
           <p className="mt-4 text-side-muted">{site.tagline}.</p>
+          <p className="mt-3 text-side-muted">
+            A product of <span className="text-side-text">{business.parent}</span>, {business.city}.
+          </p>
         </div>
         <nav aria-label="Footer">
           <h2 className="text-sm font-semibold text-white">Product</h2>
@@ -37,8 +40,9 @@ export function Footer() {
           </ul>
         </nav>
         <div>
-          <h2 className="text-sm font-semibold text-white">Talk to us</h2>
+          <h2 className="text-sm font-semibold text-white">Company</h2>
           <ul className="mt-3 space-y-2">
+            <li><Link href="/about" className="hover:text-white">About us</Link></li>
             <li><Link href="/contact" className="hover:text-white">Book a demo</Link></li>
             <li><a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a></li>
             <li><button type="button" onClick={openCookieSettings} className="hover:text-white">Cookie settings</button></li>
