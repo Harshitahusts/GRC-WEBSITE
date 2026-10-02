@@ -30,7 +30,7 @@ Open the site and the app on the same host name (both `localhost`, or both `127.
 
 ## DPDP deadline countdown
 
-`components/deadline-countdown.tsx` counts down live to **13 May 2027, 00:00 IST** (Asia/Kolkata), when the DPDP Act's main duties apply. It shows as a strip above the header on every page except `/demo`, and as a large clock in the homepage hero. The deadline is fixed in IST, so every visitor sees the same countdown whatever their time zone, and both switch to "The DPDP Act's main duties now apply" once it passes. To change the date, edit `DPDP_DEADLINE` in that file.
+`components/deadline-countdown.tsx` counts down live to **13 May 2027, 00:00 IST** (Asia/Kolkata), when the DPDP Act's main duties apply. It shows as a strip pinned above the menu on every page except `/demo` (both stay on screen while scrolling), and as a large clock in the homepage hero. The deadline is fixed in IST, so every visitor sees the same countdown whatever their time zone, and both switch to "The DPDP Act's main duties now apply" once it passes. To change the date, edit `DPDP_DEADLINE` in that file.
 
 ## Cookie consent
 
