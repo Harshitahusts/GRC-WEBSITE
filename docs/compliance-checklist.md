@@ -7,7 +7,7 @@ Status of the website (not the app) as of 2 October 2026. Policies are drafts. *
 | Privacy policy (DPDP Act notice, purposes, retention, rights, Grievance Officer) | Done, needs legal review | `/privacy` |
 | Terms of service | Done, needs legal review | `/terms` |
 | Cookie policy (every cookie listed) | Done | `/cookies` |
-| Cookie consent banner (Reject all, Accept all, Customise; equal weight; reopenable) | Done | `components/cookie-consent.tsx` |
+| Cookie consent pop-up (Reject all, Accept all, Customise; equal weight; must be answered before using the site, except on the policy pages; reopenable from the corner button) | Done | `components/cookie-consent.tsx` |
 | Consent on forms (required, unticked, linked to the policy; separate optional marketing opt-in) | Done | `/contact` |
 | No unnecessary data (only name and email required; everything else optional) | Done | `/contact`, `/privacy-request` |
 | Age check (18+ confirmation; policy says the site isn't for children) | Done | `/contact`, `/privacy#children` |

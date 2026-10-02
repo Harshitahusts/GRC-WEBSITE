@@ -30,7 +30,7 @@ Open the site and the app on the same host name (both `localhost`, or both `127.
 
 ## Cookie consent
 
-A consent pop-up (`components/cookie-consent.tsx`) asks first-time visitors to **Reject all**, **Accept all** or **Customise** (strictly necessary, analytics, marketing). The choice is saved for six months in the `grcflow_consent` cookie, and **Cookie settings** in the footer reopens it.
+A consent pop-up (`components/cookie-consent.tsx`) asks first-time visitors to **Reject all**, **Accept all** or **Customise** (strictly necessary, analytics, marketing). Until they choose, the rest of the site is locked (dimmed, inert, no scrolling); `/cookies`, `/privacy` and `/terms` stay readable so people can check what they're agreeing to. Reject all is always as easy as Accept all, so nobody is forced to accept. The choice is saved for six months in the `grcflow_consent` cookie; the cookie button in the corner and **Cookie settings** in the footer reopen it.
 
 The site sets no analytics or marketing cookies today. When you add a tool, load it only after consent:
 
