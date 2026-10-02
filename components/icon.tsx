@@ -1,6 +1,7 @@
 // Icon set ported from the GRC agent app (templates/_icons.html).
 
 const paths = {
+  "cookie": <><path d="M21 12a9 9 0 1 1-9.5-9 3 3 0 0 0 3.5 3.5 3 3 0 0 0 3 3 3 3 0 0 0 3 2.5z"/><circle cx="8.5" cy="9.5" r=".9"/><circle cx="15.5" cy="15" r=".9"/><circle cx="9.5" cy="15.5" r=".9"/><circle cx="12.5" cy="12" r=".6"/></>,
   "home": <><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></>,
   "briefcase": <><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></>,
   "spark": <><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7z"/></>,
