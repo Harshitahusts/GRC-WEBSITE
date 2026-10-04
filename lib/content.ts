@@ -231,3 +231,175 @@ export const analystExample = {
     ],
     cites: ["Section 8(5)", "Rule 6", "Section 16"],
   };
+
+// ---------------------------------------------------------------- How GRC Flow works
+// From the "GRC Flow: Introductory Meeting" brief. `log` is what the agent does at each
+// step, shown as a live activity log in the animated journey on the home page. The
+// clients, people and numbers in the log are made-up examples.
+
+export type LogTone = "info" | "ai" | "pass" | "fail" | "person";
+export type JourneyStep = {
+  title: string;
+  short: string;
+  you: string;
+  tool: string;
+  get: string;
+  gate?: boolean;
+  log: { tone: LogTone; text: string }[];
+};
+
+export const journey: JourneyStep[] = [
+  {
+    title: "Set up your team",
+    short: "Admin, member and viewer roles",
+    you: "Sign in at app.grc-flow.com and add colleagues as admin, member or viewer.",
+    tool: "Gives each person only the access their role needs, and logs every action.",
+    get: "A secure shared workspace instead of files on personal laptops.",
+    log: [
+      { tone: "person", text: "Priya added as member" },
+      { tone: "info", text: "Viewer access for the client's auditor: read-only" },
+      { tone: "pass", text: "Action sealed in the audit log (#1042)" },
+    ],
+  },
+  {
+    title: "Add the client",
+    short: "One space per company",
+    you: "Add the company name and sector.",
+    tool: "Opens a dedicated space with its own readiness plan, registers, evidence and tasks.",
+    get: "One place per client. Nothing mixes between clients.",
+    log: [
+      { tone: "info", text: "Engagement created: Arogya Health Clinics, healthcare" },
+      { tone: "info", text: "Readiness plan opened with 10 steps" },
+      { tone: "pass", text: "Registers, evidence library and tasks ready" },
+    ],
+  },
+  {
+    title: "Guided intake",
+    short: "Answers mapped to each obligation",
+    you: "Answer plain-language questions about how the business collects and uses personal data.",
+    tool: "Maps every answer to the matching obligation in the Act and Rules, and flags answers that contradict each other.",
+    get: "Full coverage of the law without reading it end to end.",
+    log: [
+      { tone: "person", text: "Q14 \"Do you collect data from under-18s?\": Yes" },
+      { tone: "ai", text: "Follow-up added: verifiable parental consent" },
+      { tone: "pass", text: "Answer mapped to Section 9(1) and Rule 10" },
+      { tone: "fail", text: "Conflict: Q6 says no marketing, Q21 lists marketing emails" },
+    ],
+  },
+  {
+    title: "Map the data",
+    short: "Inventory, flows, AWS and GitHub",
+    you: "List data categories and vendors, upload sample CSV or JSON files, and connect AWS or GitHub with a read-only key.",
+    tool: "Finds personal data, builds the data inventory and data-flow map, including flows leaving India, and runs security checks.",
+    get: "A real picture of where personal data lives, backed by technical evidence.",
+    log: [
+      { tone: "ai", text: "patients.csv scanned: 12 columns" },
+      { tone: "person", text: "Aadhaar number found (checksum valid): waiting for a person to confirm" },
+      { tone: "fail", text: "Backups go to AWS us-east-1: data leaves India" },
+      { tone: "pass", text: "AWS: S3 public access blocked" },
+    ],
+  },
+  {
+    title: "AI assessment",
+    short: "Cited findings and scored risks",
+    you: "Click to run the assessment.",
+    tool: "Drafts a finding for every gap, each citing the exact section, and turns every gap into a risk on the 5×5 matrix.",
+    get: "In hours, a first draft that usually takes weeks.",
+    log: [
+      { tone: "ai", text: "Drafting finding: security safeguards" },
+      { tone: "pass", text: "Citation Section 8(5) checked against the text of the Act" },
+      { tone: "fail", text: "Risk R-12 scored 4 × 5 = 20: critical" },
+      { tone: "ai", text: "18 findings drafted, each labelled \"Human review required\"" },
+    ],
+  },
+  {
+    title: "Human review",
+    short: "Approve or rewrite, ask the Analyst",
+    gate: true,
+    you: "Approve, edit or reject each AI finding. Ask the GRC Analyst \"What's still open for this client?\"",
+    tool: "Records who reviewed what and when. Nothing AI-drafted counts until a person signs it off.",
+    get: "Findings you can stand behind in front of a client or auditor.",
+    log: [
+      { tone: "person", text: "F-07 approved by Priya at 11:42" },
+      { tone: "fail", text: "F-09 marked wrong: a person must rewrite it" },
+      { tone: "ai", text: "Analyst: 3 obligations still open, Sections 6, 8(6) and 9" },
+      { tone: "info", text: "Delivery locked: 4 findings still need review" },
+    ],
+  },
+  {
+    title: "Fix and add evidence",
+    short: "Tasks, owners, checked evidence",
+    you: "Assign tasks with owners and due dates, then upload policies, contracts and screenshots as evidence.",
+    tool: "Checks each document covers its obligation, updates control status and readiness, and lists due work in the work queue.",
+    get: "A live readiness score that moves as real work is done.",
+    log: [
+      { tone: "person", text: "Task \"Publish privacy notice\" assigned to Arjun, due 20 Oct" },
+      { tone: "pass", text: "breach-policy.pdf is about Rule 7: counts as evidence" },
+      { tone: "fail", text: "A CV filed as the breach policy: flagged, stops counting" },
+      { tone: "pass", text: "Readiness 62 → 71" },
+    ],
+  },
+  {
+    title: "Deliver and keep running",
+    short: "Reports out, then daily privacy work",
+    you: "Generate the gap report, RoPA, privacy notice, breach playbook and DPA draft.",
+    tool: "Blocks delivery until every check passes, then runs consent, rights requests, breaches, vendor and policy reviews.",
+    get: "A finished assessment, and the system to stay compliant after 13 May 2027.",
+    log: [
+      { tone: "pass", text: "All checks passed: delivery unlocked" },
+      { tone: "info", text: "Gap report, RoPA, privacy notice, playbook and DPA draft ready as .docx" },
+      { tone: "info", text: "Access request REQ-004: 90-day clock started" },
+      { tone: "fail", text: "Breach BRE-002: Board report due in 72 hours" },
+    ],
+  },
+];
+
+// "AI you can defend in front of an auditor": built into the product, not left to habit.
+export const aiRules = [
+  { title: "Every finding cites the law", body: "Each gap points to the exact section of the DPDP Act or Rule it relies on, taken from the official text stored in the tool." },
+  { title: "A person reviews before delivery", body: "AI-drafted findings are labelled as such. A reviewer approves or rewrites each one, and the tool records who did it and when." },
+  { title: "Evidence is checked, not just stored", body: "The AI reads each uploaded file and says whether it addresses its obligation. A CV filed as a breach policy is flagged and stops counting." },
+  { title: "Honest labels", body: "The AI never decides compliance. A file it can't read, such as a scan, is labelled \"Couldn't read the text\" instead of being guessed at." },
+  { title: "Delivery stays locked until every check passes", body: "There is no override, so nothing unreviewed reaches a client." },
+];
+
+// What "self-compliance" means under the DPDPA, and what GRC Flow gives you at each step.
+export const selfCompliance = [
+  { step: "Assess", you: "Check yourself against every obligation in the Act and Rules.", tool: "Guided intake mapped to every obligation; AI-drafted gaps citing the exact section." },
+  { step: "Fix", you: "Close the gaps: notices, consent, security, contracts, deletion, rights.", tool: "Risk register, readiness plan and tasks with owners and due dates." },
+  { step: "Document", you: "Policies, a record of processing and evidence for each control.", tool: "Privacy notice, RoPA, breach playbook and DPA drafts; an evidence library checked by AI." },
+  { step: "Prove", you: "Show it when a person complains or the Board investigates.", tool: "Controls that need evidence, human-reviewed findings and a tamper-evident audit log." },
+  { step: "Keep it running", you: "Handle requests, consent changes and breaches on time.", tool: "Consent records, rights requests on a 90-day clock, breaches on a 72-hour clock, policy reviews." },
+];
+
+export const comparison = {
+  columns: ["Spreadsheets and email", "Generic GRC tools", "GRC Flow"],
+  rows: [
+    { what: "Built for the DPDPA", values: ["A template you maintain", "Usually ISO or GDPR first", "DPDP Act and Rules only, section by section"] },
+    { what: "First draft of the gap analysis", values: ["Weeks of manual work", "Manual questionnaires", "Hours, AI-drafted with citations"] },
+    { what: "Proof for each finding", values: ["Scattered files", "Attachments", "Evidence checked by AI, reviewed by a person"] },
+    { what: "Technical checks", values: ["Screenshots on request", "Often extra modules", "AWS and GitHub checked read-only"] },
+    { what: "Risk and data-flow view", values: ["Built by hand", "Varies", "Generated from the client's own answers"] },
+    { what: "Who changed what", values: ["No reliable record", "Activity log", "Tamper-evident audit log"] },
+    { what: "After the assessment", values: ["The spreadsheet goes stale", "Separate tools", "Consent, requests and breaches in the same place"] },
+    { what: "Where data lives", values: ["Wherever files are shared", "Often outside India", "Hosted in India"] },
+  ],
+};
+
+export const security = [
+  { area: "Hosting", how: "Cloud server in Mumbai, India. The Firm plan can also run on your own servers." },
+  { area: "Connection", how: "HTTPS everywhere, with certificates renewed automatically." },
+  { area: "Sign-in", how: "Hashed passwords, lockout after repeated failed attempts, secure session cookies." },
+  { area: "Access", how: "Admin, member and viewer roles. Evidence downloads only when signed in." },
+  { area: "Secrets", how: "Connector keys and AI provider keys are stored encrypted." },
+  { area: "Connectors", how: "Read-only by design: they collect evidence and never change your systems." },
+  { area: "Uploads", how: "File type checked against its content, 10 MB limit, stored under random names." },
+  { area: "Audit trail", how: "Every change logged in a tamper-evident chain that can be verified and exported." },
+];
+
+export const pilot = [
+  { when: "Today", what: "We create your workspace and send login details." },
+  { when: "Week 1", what: "A guided onboarding session. We set up your first client together." },
+  { when: "Weeks 2 to 4", what: "A pilot on one real engagement, with a check-in call each week." },
+  { when: "End of pilot", what: "Review the results and choose a plan." },
+];
