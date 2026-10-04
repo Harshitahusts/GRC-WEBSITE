@@ -7,8 +7,9 @@ COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
 COPY . .
 # Inlined into the browser bundle at build time (see lib/site.ts).
+ARG NEXT_PUBLIC_APP_URL=""
 ARG NEXT_PUBLIC_APP_DEMO_URL=""
-ENV NEXT_PUBLIC_APP_DEMO_URL=$NEXT_PUBLIC_APP_DEMO_URL
+ENV NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL NEXT_PUBLIC_APP_DEMO_URL=$NEXT_PUBLIC_APP_DEMO_URL
 RUN npm run build
 
 FROM node:22-alpine

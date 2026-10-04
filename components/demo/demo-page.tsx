@@ -12,13 +12,23 @@ type Reach = "checking" | "up" | "down";
 
 // The app's address. Without NEXT_PUBLIC_APP_DEMO_URL, reuse the host name the
 // site was opened on so the app's SameSite=strict session cookie works in the frame.
+// The "Real app" tab: when a hosted demo address is set, or when the site runs on this
+// computer or the office network next to start-demo.bat. On the live site without a
+// hosted demo, the page is the guided tour only.
+function appAvailable() {
+  if (site.appDemoUrl) return true;
+  const h = window.location.hostname;
+  return h === "localhost" || h.endsWith(".localhost") || h.endsWith(".local") || /^(127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(h);
+}
+
 function appUrl() {
   if (site.appDemoUrl) return site.appDemoUrl.replace(/\/$/, "");
   return `${window.location.protocol}//${window.location.hostname}:${site.appDemoPort}`;
 }
 
 export function DemoPage() {
-  const [mode, setMode] = useState<Mode>("app");
+  const [hasApp, setHasApp] = useState(false);
+  const [mode, setMode] = useState<Mode>("tour");
   const [url, setUrl] = useState("");
   const [reach, setReach] = useState<Reach>("checking");
 
@@ -36,14 +46,17 @@ export function DemoPage() {
   }, []);
 
   useEffect(() => {
+    if (!appAvailable()) return;
+    setHasApp(true);
     // Deep links into the guided tour (e.g. /demo#analyst) open the tour.
-    const follow = () => {
+    const follow = () => setMode(window.location.hash.length > 1 ? "tour" : "app");
+    follow();
+    const onHash = () => {
       if (window.location.hash.length > 1) setMode("tour");
     };
-    follow();
-    window.addEventListener("hashchange", follow);
+    window.addEventListener("hashchange", onHash);
     check();
-    return () => window.removeEventListener("hashchange", follow);
+    return () => window.removeEventListener("hashchange", onHash);
   }, [check]);
 
   function choose(m: Mode) {
@@ -55,25 +68,27 @@ export function DemoPage() {
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-30 flex flex-wrap items-center lg:h-14 lg:flex-nowrap gap-x-4 gap-y-2 bg-side px-4 py-2 text-side-text sm:px-6">
         <Link href="/" aria-label={`Back to ${site.name}`}><Logo tone="dark" /></Link>
-        <div role="tablist" aria-label="Demo type" className="flex rounded-[8px] bg-side-hover p-0.5">
-          {(
-            [
-              ["app", "Real app"],
-              ["tour", "Guided tour"],
-            ] as const
-          ).map(([m, label]) => (
-            <button
-              key={m}
-              role="tab"
-              type="button"
-              aria-selected={mode === m}
-              onClick={() => choose(m)}
-              className={`rounded-[6px] px-3 py-1 text-[0.88rem] font-semibold ${mode === m ? "bg-side-active text-white shadow-[inset_0_-2px_0_#5b9bf0]" : "hover:text-white"}`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        {hasApp && (
+          <div role="tablist" aria-label="Demo type" className="flex rounded-[8px] bg-side-hover p-0.5">
+            {(
+              [
+                ["app", "Real app"],
+                ["tour", "Guided tour"],
+              ] as const
+            ).map(([m, label]) => (
+              <button
+                key={m}
+                role="tab"
+                type="button"
+                aria-selected={mode === m}
+                onClick={() => choose(m)}
+                className={`rounded-[6px] px-3 py-1 text-[0.88rem] font-semibold ${mode === m ? "bg-side-active text-white shadow-[inset_0_-2px_0_#5b9bf0]" : "hover:text-white"}`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
         {mode === "app" && reach === "up" && (
           <p className="text-[0.85rem] text-side-muted">
             Sign in as <code className="rounded bg-side-hover px-1.5 text-white">{site.appDemoLogin.user}</code> /{" "}
@@ -84,6 +99,7 @@ export function DemoPage() {
           {mode === "app" && reach === "up" && (
             <a href={url} target="_blank" rel="noreferrer" className="font-semibold hover:text-white">Open in new tab</a>
           )}
+          {!hasApp && <a href={site.appUrl} className="font-semibold hover:text-white">Sign in</a>}
           <Link href="/contact" className="btn btn-primary !px-3 !py-1 text-[0.82rem]">Book a demo</Link>
           <Link href="/" className="hidden font-semibold hover:text-white sm:inline">Back to site</Link>
         </div>

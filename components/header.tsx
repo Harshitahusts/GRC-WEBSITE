@@ -36,6 +36,9 @@ export function Header() {
             })}
           </nav>
           <div className="ml-auto flex items-center gap-2">
+            <a href={site.appUrl} className="rounded-[7px] px-2.5 py-1.5 font-semibold whitespace-nowrap text-fg-2 hover:bg-hover hover:text-fg">
+              Sign in
+            </a>
             <ButtonLink href="/contact" className="!px-3.5 !py-1.5">Book a demo</ButtonLink>
           </div>
         </div>
