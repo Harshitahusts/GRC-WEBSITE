@@ -43,6 +43,7 @@ export function Footer() {
           <h2 className="text-sm font-semibold text-white">Company</h2>
           <ul className="mt-3 space-y-2">
             <li><Link href="/about" className="hover:text-white">About us</Link></li>
+            <li><a href={site.appUrl} className="hover:text-white">Sign in to {site.name}</a></li>
             <li><Link href="/contact" className="hover:text-white">Book a demo</Link></li>
             <li><a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a></li>
             <li><button type="button" onClick={openCookieSettings} className="hover:text-white">Cookie settings</button></li>

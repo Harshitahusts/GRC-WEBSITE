@@ -10,8 +10,7 @@ It covers the Oracle Cloud (Mumbai) server, the Namecheap DNS records and one co
 | Address | What |
 |---|---|
 | `grc-flow.com` (and `www.`) | This website, built from this repo's `main` branch with the `Dockerfile` here |
-| `app.grc-flow.com` | GRC Flow, the real workspace |
-| `demo.grc-flow.com` | The demo workspace shown on this website's Live demo page |
+| `app.grc-flow.com` | GRC Flow, the app. The website's **Sign in** links go here, and its sign-in page links back |
 
 To put website changes live: merge them into `main`, then on the server run
 `cd ~/grc-flow && bash deploy/setup-server.sh`. It rebuilds the website from the latest `main`.

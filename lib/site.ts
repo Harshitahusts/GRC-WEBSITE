@@ -9,11 +9,13 @@ export const site = {
   // POST endpoint for the demo form (e.g. a Brevo or Formspree form URL).
   // Leave empty and the form opens a pre-filled email to `email` instead.
   demoFormEndpoint: "",
-  // The real GRC agent app shown on /demo: its demo workspace, started with
-  // start-demo.bat in the GRC-Ai folder (port 8001). Set NEXT_PUBLIC_APP_DEMO_URL
-  // when it's hosted somewhere else (the server setup in GRC-Ai sets https://demo.<domain>). Left empty,
-  // the site uses the same host name it was opened on, port 8001, because the
-  // app's sign-in cookie only works inside the page when both share a host name.
+  // The GRC Flow app, where customers sign in. The "Sign in" links go here.
+  appUrl: process.env.NEXT_PUBLIC_APP_URL || "https://app.grc-flow.com",
+  // Optional: the app's demo workspace (start-demo.bat in the GRC-Ai folder, port 8001),
+  // shown on /demo next to the guided tour. Set NEXT_PUBLIC_APP_DEMO_URL when it's hosted. Left empty, the "Real app" tab only appears when the site is
+  // opened on this computer or the office network: it then uses the same host name,
+  // port 8001, because the app's sign-in cookie only works inside the page when both
+  // share a host name. On the live site, /demo shows the guided tour only.
   appDemoUrl: process.env.NEXT_PUBLIC_APP_DEMO_URL ?? "",
   appDemoPort: 8001,
   appDemoLogin: { user: "demo", password: "grc-demo-2026" },
