@@ -5,9 +5,10 @@ import { journey, type LogTone } from "@/lib/content";
 import { Icon, type IconName } from "./icon";
 
 // The eight-step journey, played like a run of the agent: each step's activity log
-// appears line by line, then the next step starts. It pauses while the pointer or
-// keyboard focus is inside, while it's off screen, when the visitor presses Pause,
-// and for anyone who prefers reduced motion (who see each step's full log at once).
+// appears line by line, then the next step starts. It pauses while a keyboard user is
+// moving through the steps, while it's off screen, when the visitor presses Pause, and
+// for anyone who prefers reduced motion (who see each step's full log at once). Hovering
+// doesn't pause it, or it would freeze whenever the mouse rests on it.
 
 const LINE_MS = 1100;
 const HOLD_LINES = 1.6; // how long a finished log stays up, in lines
@@ -26,13 +27,13 @@ export function AgentJourney() {
   const [playing, setPlaying] = useState(true);
   const [reduced, setReduced] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [hovered, setHovered] = useState(false);
+  const [held, setHeld] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLOListElement>(null);
 
   const current = journey[step];
   const total = current.log.length + HOLD_LINES;
-  const running = playing && !reduced && visible && !hovered;
+  const running = playing && !reduced && visible && !held;
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -45,7 +46,7 @@ export function AgentJourney() {
   useEffect(() => {
     const el = box.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.25 });
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.15 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -90,11 +91,9 @@ export function AgentJourney() {
     <div
       ref={box}
       className="journey"
-      onPointerEnter={() => setHovered(true)}
-      onPointerLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
+      onFocus={(e) => setHeld(e.target.matches(":focus-visible"))}
       onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node)) setHovered(false);
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setHeld(false);
       }}
     >
       <div className="flex flex-wrap items-end justify-between gap-4">
