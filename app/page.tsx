@@ -1,4 +1,6 @@
 import { AgentJourney } from "@/components/agent-journey";
+import { AudienceFlows } from "@/components/audience-flows";
+import { PlatformHub } from "@/components/platform-hub";
 import { ButtonLink } from "@/components/buttons";
 import { DeadlineClock } from "@/components/deadline-countdown";
 import { Icon } from "@/components/icon";
@@ -45,6 +47,16 @@ export default function Home() {
               fetchPriority="high"
             />
           </a>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-24">
+        <PlatformHub />
+      </section>
+
+      <section className="border-y border-line bg-surface">
+        <div className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-24">
+          <AudienceFlows />
         </div>
       </section>
 
