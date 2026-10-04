@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Steps through `count` items every `ms`. Stops while the element is off screen, while the
-// pointer or keyboard focus is inside it, when paused, and for people who prefer reduced
-// motion. Returns props to spread on the element that should pause it.
+// Steps through `count` items every `ms`. Stops while the element is off screen, while a
+// keyboard user is moving through it, when paused, and for people who prefer reduced
+// motion. Hovering doesn't stop it: a resting mouse pointer would freeze it as soon as
+// the visitor stops scrolling. Returns props to spread on the element it belongs to.
 export function useAutoplay(count: number, ms: number) {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
@@ -24,7 +25,7 @@ export function useAutoplay(count: number, ms: number) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.3 });
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.15 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -39,9 +40,8 @@ export function useAutoplay(count: number, ms: number) {
 
   const hold = {
     ref,
-    onPointerEnter: () => setHeld(true),
-    onPointerLeave: () => setHeld(false),
-    onFocus: () => setHeld(true),
+    // Only keyboard focus holds it; clicking a step focuses it too, and should keep playing.
+    onFocus: (e: React.FocusEvent<HTMLElement>) => setHeld(e.target.matches(":focus-visible")),
     onBlur: (e: React.FocusEvent<HTMLElement>) => {
       if (!e.currentTarget.contains(e.relatedTarget as Node)) setHeld(false);
     },
