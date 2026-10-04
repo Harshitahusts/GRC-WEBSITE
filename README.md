@@ -10,7 +10,7 @@ npm run build   # production build
 
 ## Deploy
 
-`deploy/` runs the website, the GRC agent app (`app.`), its demo workspace (`demo.`) and Caddy (HTTPS) on one server with Docker Compose. See [deploy/README.md](deploy/README.md) for the Oracle Cloud (Mumbai) and Namecheap walkthrough.
+The website runs on one Oracle Cloud server together with the GRC Flow app (`app.`) and its demo workspace (`demo.`), set up by the app's script. See [deploy/README.md](deploy/README.md).
 
 ## Where things live
 
@@ -30,7 +30,7 @@ npm run build   # production build
 - **Real app** (default): the actual GRC agent app's demo workspace, embedded in the page. Start it with `start-demo.bat` in the GRC-Ai folder (port 8001), or let this site's `start.bat` start it when the GRC-Ai folder sits next to this one (`..\GRC-Ai`) and has been installed once. Sign in as `demo` / `grc-demo-2026`.
 - **Guided tour**: a click-through with sample data (`components/demo/`), used when the app isn't running.
 
-Open the site and the app on the same host name (both `localhost`, or both `127.0.0.1`); the app's sign-in cookie is `SameSite=strict` and won't work inside the page otherwise. When the app is hosted, set `NEXT_PUBLIC_APP_DEMO_URL` (for example `https://demo.grc-flow.com`) before `npm run build`, on the same domain as the website. `deploy/compose.yaml` sets it for you.
+Open the site and the app on the same host name (both `localhost`, or both `127.0.0.1`); the app's sign-in cookie is `SameSite=strict` and won't work inside the page otherwise. When the app is hosted, set `NEXT_PUBLIC_APP_DEMO_URL` (for example `https://demo.grc-flow.com`) before `npm run build`, on the same domain as the website. The server setup in GRC-Ai sets it for you.
 
 ## DPDP deadline countdown
 
