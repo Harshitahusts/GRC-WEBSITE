@@ -403,3 +403,102 @@ export const pilot = [
   { when: "Weeks 2 to 4", what: "A pilot on one real engagement, with a check-in call each week." },
   { when: "End of pilot", what: "Review the results and choose a plan." },
 ];
+
+// ---------------------------------------------------------------- Platform hub (home page)
+// Modules feed one cycle; the cycle produces the results on the right.
+
+export type Stage = "Assess" | "Fix" | "Document" | "Prove";
+
+export const hub = {
+  modules: [
+    { name: "Guided intake", stage: "Assess" as Stage },
+    { name: "Data discovery", stage: "Assess" as Stage },
+    { name: "Risk register and tasks", stage: "Fix" as Stage },
+    { name: "Documents", stage: "Document" as Stage },
+    { name: "Evidence and connectors", stage: "Prove" as Stage },
+    { name: "Audit log", stage: "Prove" as Stage },
+  ],
+  stages: [
+    { name: "Assess" as Stage, detail: "Every intake answer and personal data field is mapped to its obligation in the Act and Rules." },
+    { name: "Fix" as Stage, detail: "Gaps become scored risks and tasks, each with an owner and a due date." },
+    { name: "Document" as Stage, detail: "Privacy notice, RoPA, breach playbook and DPA drafts, built from the client's own answers." },
+    { name: "Prove" as Stage, detail: "Evidence checked by AI and reviewed by a person, with every change in a tamper-evident log." },
+  ],
+  outcomes: ["Readiness report", "Audit-ready proof", "Everyday compliance"],
+};
+
+// ---------------------------------------------------------------- Partner and business flows
+// Each step shows a document in the app with the details GRC Flow fills in highlighted.
+// Clients, people and numbers are made-up examples.
+
+export type FlowStep = {
+  label: string;
+  heading: string;
+  body: string;
+  doc: { kind: string; title: string; chips: string[] };
+};
+
+export const audienceFlows: { id: string; tab: string; intro: string; steps: FlowStep[] }[] = [
+  {
+    id: "partners",
+    tab: "For GRC partners",
+    intro: "Privacy and GRC consultants running DPDPA assessments for many clients at once.",
+    steps: [
+      {
+        label: "Add your clients",
+        heading: "Every client in its own workspace",
+        body: "Open an engagement for each client with its own plan, registers, evidence and tasks. Nothing mixes between clients, and clients or auditors can get read-only access.",
+        doc: { kind: "Engagement", title: "Arogya Health Clinics", chips: ["Healthcare", "Lead: Priya", "Auditor: read-only"] },
+      },
+      {
+        label: "Run the intake",
+        heading: "Plain questions, mapped to the Act",
+        body: "The client answers in business language. Each answer is mapped to its obligation, follow-ups appear only when they apply, and contradictions are flagged.",
+        doc: { kind: "Intake", title: "Children's data", chips: ["Section 9(1)", "Rule 10", "Conflict with Q6"] },
+      },
+      {
+        label: "Review AI findings",
+        heading: "The AI drafts. You sign off.",
+        body: "Every gap gets a drafted finding that cites the exact section, and a risk score. Nothing counts until a reviewer approves or rewrites it.",
+        doc: { kind: "Finding F-07", title: "Security safeguards", chips: ["Section 8(5)", "Risk 20 of 25", "Approved by Priya"] },
+      },
+      {
+        label: "Deliver the report",
+        heading: "Client-ready documents, locked until they're right",
+        body: "Gap report, RoPA, privacy notice, breach playbook and a DPA draft in Word. Delivery stays locked until every check passes.",
+        doc: { kind: "Gap report", title: "Arogya Health Clinics", chips: ["71 of 100 ready", "4 gaps to close", "Ready to deliver"] },
+      },
+    ],
+  },
+  {
+    id: "business",
+    tab: "For businesses",
+    intro: "In-house compliance, legal and IT teams getting their own company ready.",
+    steps: [
+      {
+        label: "Map your personal data",
+        heading: "Know what you hold and where it goes",
+        body: "Scan exports for personal data, build the inventory and the data-flow map, and see which flows leave India. AWS and GitHub are checked read-only.",
+        doc: { kind: "Data inventory", title: "patients.csv", chips: ["Aadhaar number", "Backups: us-east-1", "Leaves India"] },
+      },
+      {
+        label: "Find your gaps",
+        heading: "A plan built from your own answers",
+        body: "See every obligation's status, what's missing and the penalty it carries. The readiness plan always shows the next step.",
+        doc: { kind: "Readiness plan", title: "Notice and consent", chips: ["Section 5 notice", "Up to ₹50 crore", "Next: publish notice"] },
+      },
+      {
+        label: "Fix with owners",
+        heading: "Work that moves your score",
+        body: "Turn each gap into a task with an owner and due date. Upload the policy or contract, and the AI checks it's actually about the obligation.",
+        doc: { kind: "Task T-31", title: "Publish privacy notice", chips: ["Owner: Arjun", "Due 20 Oct", "Evidence checked"] },
+      },
+      {
+        label: "Stay compliant",
+        heading: "Run privacy operations every day",
+        body: "Rights requests on a 90-day clock, breaches on the 72-hour Board report clock, consent records and policy reviews, all in one place.",
+        doc: { kind: "Privacy operations", title: "This week", chips: ["REQ-004: 90 days", "BRE-002: 72 hours", "Consent withdrawn"] },
+      },
+    ],
+  },
+];
