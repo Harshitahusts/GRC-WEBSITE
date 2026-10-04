@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ButtonLink } from "@/components/buttons";
-import { legalNav, nav } from "@/lib/site";
+import { legalNav, nav, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -19,7 +19,7 @@ export default function NotFound() {
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <ButtonLink href="/">Go to the home page</ButtonLink>
-          <ButtonLink href="/demo" variant="secondary">Try the live demo</ButtonLink>
+          <ButtonLink href={site.appUrl} variant="secondary">Open GRC Flow</ButtonLink>
         </div>
         <nav aria-label="Site pages" className="mt-12 grid max-w-xl gap-8 text-night-text sm:grid-cols-2">
           {[

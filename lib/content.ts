@@ -220,3 +220,14 @@ export const faqs = [
     a: "Yes. It runs with Docker, and your data stays in your own workspace.",
   },
 ];
+
+// An example of the GRC Analyst's answers, shown on the home page (labelled as an example).
+export const analystExample = {
+    q: "Summarise Arogya Health Clinics for management",
+    a: [
+      "Arogya is 58/100 ready. Of 8 obligations assessed, 2 are compliant, 4 are gaps and 2 are open items.",
+      "The biggest exposure is security: the appointment database isn't encrypted at rest and logs are kept for 30 days instead of one year. A security failure carries the highest penalty in the Act, up to ₹250 crore.",
+      "Patient data is backed up to the EU. That's allowed unless the government restricts the destination, but it should be recorded and reviewed.",
+    ],
+    cites: ["Section 8(5)", "Rule 6", "Section 16"],
+  };

@@ -73,7 +73,6 @@ export function CookieConsent() {
   if (step === "hidden") {
     if (!decided) return null;
     // After a choice, a small button stays in the corner to reopen the settings.
-    // On /demo it sits bottom-right so it doesn't cover the app's own sidebar.
     return (
       <button
         ref={reopen}
@@ -81,7 +80,7 @@ export function CookieConsent() {
         onClick={openSettings}
         aria-label="Cookie settings"
         title="Cookie settings"
-        className={`fixed bottom-4 z-40 grid size-11 place-items-center rounded-full border border-line bg-surface text-accent shadow-float hover:bg-accent-soft ${path.startsWith("/demo") ? "right-4" : "left-4"}`}
+        className={`fixed bottom-4 z-40 grid size-11 place-items-center rounded-full border border-line bg-surface text-accent shadow-float hover:bg-accent-soft left-4`}
       >
         <Icon name="cookie" className="size-5" />
       </button>

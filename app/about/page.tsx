@@ -85,7 +85,7 @@ export default function AboutPage() {
           </dl>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href="/contact">Book a demo</ButtonLink>
-            <ButtonLink href="/demo" variant="secondary">Try the live demo</ButtonLink>
+            <ButtonLink href={site.appUrl} variant="secondary">Open GRC Flow</ButtonLink>
           </div>
         </div>
       </section>

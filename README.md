@@ -16,25 +16,20 @@ The website runs on one Oracle Cloud server together with the GRC Flow app (`app
 
 - `lib/site.ts`: brand name, contact email, form endpoints, and the business details shown in the footer and policies (fill in the `[placeholders]` before launch)
 - `lib/content.ts`: marketing copy (workflow, registers, discovery, documents, connectors, plans, FAQs)
-- `lib/demo-data.ts`: sample workspace for the live demo at `/demo`
-- `app/`: pages (`/`, `/product`, `/demo`, `/connectors`, `/pricing`, `/contact`) and legal pages (`/privacy`, `/terms`, `/cookies`, `/privacy-request`, `/unsubscribe`, `/accessibility`)
-- `components/`: shared UI; `components/demo/` is the interactive demo (dashboard, engagement, risk register, GRC Analyst, data flows, connectors)
+- `app/`: pages (`/`, `/product`, `/connectors`, `/pricing`, `/contact`) and legal pages (`/privacy`, `/terms`, `/cookies`, `/privacy-request`, `/unsubscribe`, `/accessibility`)
+- `components/`: shared UI
+- `public/screens/`: real screenshots of the GRC Flow app (sample clients), used on the home page
 - `docs/competitor-features.md`: DPDP.ai feature coverage, plus claims to confirm before launch
 - `docs/compliance-checklist.md`: legal pages, consent, accessibility and third-party audit, with the steps left before launch
 - `docs/email-footer.md`, `docs/licenses.md`: unsubscribe footer for emails, and licences for fonts, icons and packages
 
-## Live demo (`/demo`)
+## The app (`app.grc-flow.com`)
 
-On the live site, `/demo` is the **guided tour**: a click-through with sample data. When the site runs on your own computer or office network, it also has a **Real app** tab:
-
-- **Real app**: the actual GRC agent app's demo workspace, embedded in the page. Start it with `start-demo.bat` in the GRC-Ai folder (port 8001), or let this site's `start.bat` start it when the GRC-Ai folder sits next to this one (`..\GRC-Ai`) and has been installed once. Sign in as `demo` / `grc-demo-2026`.
-- **Guided tour**: a click-through with sample data (`components/demo/`), used when the app isn't running.
-
-Open the site and the app on the same host name (both `localhost`, or both `127.0.0.1`); the app's sign-in cookie is `SameSite=strict` and won't work inside the page otherwise. To show a hosted demo workspace on the live site too, set `NEXT_PUBLIC_APP_DEMO_URL` (for example `https://demo.grc-flow.com`, on the same domain as the website) before `npm run build`.
+"Open GRC Flow" and "Sign in" go to the real app at `site.appUrl` (`https://app.grc-flow.com`, or `NEXT_PUBLIC_APP_URL` at build time). The old `/demo` mock-up is gone; `/demo` links redirect to the app. "Book a demo" goes to the contact form.
 
 ## DPDP deadline countdown
 
-`components/deadline-countdown.tsx` counts down live to **13 May 2027, 00:00 IST** (Asia/Kolkata), when the DPDP Act's main duties apply. It shows as a strip pinned above the menu on every page except `/demo` (both stay on screen while scrolling), and as a large clock in the homepage hero. The deadline is fixed in IST, so every visitor sees the same countdown whatever their time zone, and both switch to "The DPDP Act's main duties now apply" once it passes. To change the date, edit `DPDP_DEADLINE` in that file.
+`components/deadline-countdown.tsx` counts down live to **13 May 2027, 00:00 IST** (Asia/Kolkata), when the DPDP Act's main duties apply. It shows as a strip pinned above the menu on every page (both stay on screen while scrolling), and as a large clock in the homepage hero. The deadline is fixed in IST, so every visitor sees the same countdown whatever their time zone, and both switch to "The DPDP Act's main duties now apply" once it passes. To change the date, edit `DPDP_DEADLINE` in that file.
 
 ## Cookie consent
 

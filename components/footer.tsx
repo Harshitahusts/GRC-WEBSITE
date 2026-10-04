@@ -1,14 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { openCookieSettings } from "@/lib/consent";
 import { business, legalNav, nav, site } from "@/lib/site";
 import { Logo } from "./logo";
 
 export function Footer() {
-  const path = usePathname();
-  if (path.startsWith("/demo")) return null;
   return (
     <footer className="bg-side text-side-text">
       <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-12 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr_1fr]">

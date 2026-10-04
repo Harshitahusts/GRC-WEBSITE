@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/buttons";
 import { Icon, type IconName } from "@/components/icon";
 import { PageHead } from "@/components/page-head";
 import { areas, workflow } from "@/lib/content";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Product",
@@ -79,7 +80,7 @@ export default function ProductPage() {
           ))}
         </ul>
         <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href="/demo">Try the live demo</ButtonLink>
+          <ButtonLink href={site.appUrl}>Open GRC Flow</ButtonLink>
           <ButtonLink href="/contact" variant="secondary">Book a demo</ButtonLink>
         </div>
       </section>
