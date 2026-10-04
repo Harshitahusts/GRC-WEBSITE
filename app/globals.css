@@ -249,3 +249,129 @@
     font-weight: 600;
   }
 }
+
+/* The animated journey on the home page (components/agent-journey.tsx). */
+@layer components {
+  .journey-step {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 0.85rem 0.9rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 200ms, background-color 200ms, opacity 200ms;
+  }
+  .journey-step:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .journey-step[data-state="next"] {
+    opacity: 0.62;
+  }
+  .journey-step[data-state="active"] {
+    opacity: 1;
+    border-color: #6f9ff0;
+    background: rgba(111, 159, 240, 0.14);
+    box-shadow: 0 0 0 1px #6f9ff0, 0 12px 32px -12px rgba(111, 159, 240, 0.6);
+  }
+  .journey-step.is-gate {
+    border-style: dashed;
+    border-color: rgba(245, 213, 138, 0.55);
+  }
+  .journey-step.is-gate[data-state="active"] {
+    border-style: solid;
+    border-color: #f5d58a;
+    background: rgba(245, 213, 138, 0.12);
+    box-shadow: 0 0 0 1px #f5d58a, 0 12px 32px -12px rgba(245, 213, 138, 0.55);
+  }
+  .journey-num {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .journey-step[data-state="active"] .journey-num {
+    background: #6f9ff0;
+    color: #0b1020;
+  }
+  .journey-step[data-state="done"] .journey-num {
+    color: #7fd49b;
+    background: rgba(127, 212, 155, 0.15);
+  }
+  .journey-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .journey-bar > span {
+    display: block;
+    height: 100%;
+    background: #6f9ff0;
+    transform-origin: left;
+    transition-property: transform;
+    transition-timing-function: linear;
+  }
+  .is-gate .journey-bar > span {
+    background: #f5d58a;
+  }
+  .journey-panel {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(8, 12, 24, 0.55);
+    padding: 1.4rem;
+  }
+  .journey-log {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0a0f1c;
+    min-height: 12.5rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .journey-line {
+      animation: journey-in 380ms ease-out both;
+    }
+  }
+  @keyframes journey-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+  /* Connectors between steps on wide screens: 1→2→3→4, down, then 5←6←7←8 reads right to left. */
+  @media (min-width: 64rem) {
+    .journey-node[data-arrow]:not([data-arrow="none"])::after {
+      content: "";
+      position: absolute;
+      background: rgba(143, 182, 255, 0.45);
+    }
+    .journey-node[data-arrow="right"]::after,
+    .journey-node[data-arrow="left"]::after {
+      top: 50%;
+      width: 1.75rem;
+      height: 2px;
+    }
+    .journey-node[data-arrow="right"]::after {
+      left: 100%;
+    }
+    .journey-node[data-arrow="left"]::after {
+      right: 100%;
+    }
+    .journey-node[data-arrow="down"]::after {
+      left: 50%;
+      top: 100%;
+      width: 2px;
+      height: 2.5rem;
+    }
+  }
+}

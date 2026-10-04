@@ -1,8 +1,9 @@
+import { AgentJourney } from "@/components/agent-journey";
 import { ButtonLink } from "@/components/buttons";
 import { DeadlineClock } from "@/components/deadline-countdown";
 import { Icon } from "@/components/icon";
 import { site } from "@/lib/site";
-import { analystExample, areas, audiences, detectors, discoveryPromises, documentsDrafted, heroPoints, penalties, timeline, workflow } from "@/lib/content";
+import { aiRules, analystExample, areas, comparison, detectors, discoveryPromises, documentsDrafted, heroPoints, penalties, pilot, security, selfCompliance, timeline } from "@/lib/content";
 
 const sample = analystExample;
 
@@ -47,19 +48,30 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
-        <p className="eyebrow">How an engagement runs</p>
-        <h2 className="mt-2 max-w-2xl text-3xl font-bold sm:text-[2rem]">Four steps from first question to a delivered assessment</h2>
-        <ol className="mt-10 grid gap-4 md:grid-cols-4">
-          {workflow.map((step, i) => (
-            <li key={step.title} className="card relative p-5">
-              <span className={`grid size-8 place-items-center rounded-full text-sm font-bold ${i === workflow.length - 1 ? "bg-pass-bg text-pass" : "bg-accent-soft text-accent"}`}>{i + 1}</span>
-              <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-1.5 text-[0.92rem] text-fg-2">{step.body}</p>
+      <section className="night border-t border-white/5 bg-none bg-[#0c1220]">
+        <div className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-24">
+          <AgentJourney />
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-[1240px] gap-10 px-4 py-16 sm:px-8 md:py-20 lg:grid-cols-[1fr_1.5fr]">
+        <div>
+          <p className="eyebrow">AI you can defend</p>
+          <h2 className="mt-2 text-3xl font-bold sm:text-[2rem]">The AI drafts. A person always makes the call.</h2>
+          <p className="mt-3 text-lg text-fg-2">
+            Five rules are built into the product, not left to good habits. Use the AI provider you choose: Groq, Anthropic Claude, OpenAI, Mistral and others, with keys stored encrypted.
+          </p>
+        </div>
+        <ul className="divide-y divide-line border-y border-line">
+          {aiRules.map((r) => (
+            <li key={r.title} className="grid gap-1 py-4 sm:grid-cols-[16rem_minmax(0,1fr)] sm:gap-6">
+              <h3 className="flex items-start gap-2 font-semibold"><Icon name="shield" className="mt-0.5 size-5 text-accent" />{r.title}</h3>
+              <p className="text-fg-2">{r.body}</p>
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
+
 
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
@@ -161,6 +173,28 @@ export default function Home() {
         </ul>
       </section>
 
+      <section className="border-y border-line bg-surface">
+        <div className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
+          <p className="eyebrow">Self-compliance</p>
+          <h2 className="mt-2 max-w-3xl text-3xl font-bold sm:text-[2rem]">No licence makes you compliant. You have to be able to prove it.</h2>
+          <p className="mt-3 max-w-3xl text-lg text-fg-2">
+            Each Data Fiduciary is responsible for its own compliance and must show it if a person complains or the Data Protection Board investigates. Your privacy policy only holds up if the practice behind it matches.
+          </p>
+          <ol className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:grid-cols-5">
+            {selfCompliance.map((c, i) => (
+              <li key={c.step} className="bg-surface p-5">
+                <p className="flex items-center gap-2 font-bold">
+                  <span className="grid size-7 place-items-center rounded-full bg-accent-soft text-[0.82rem] text-accent">{i + 1}</span>
+                  {c.step}
+                </p>
+                <p className="mt-2 text-[0.92rem] text-fg-2">{c.you}</p>
+                <p className="mt-3 border-t border-line pt-3 text-[0.92rem]"><strong className="font-semibold">GRC Flow:</strong> <span className="text-fg-2">{c.tool}</span></p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section className="night">
         <div className="mx-auto grid max-w-[1240px] gap-12 px-4 py-16 sm:px-8 md:py-20 lg:grid-cols-2">
           <div>
@@ -191,23 +225,71 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
-        <div className="grid gap-4 md:grid-cols-2">
-          {audiences.map((a) => (
-            <div key={a.who} className="card p-6">
-              <h2 className="text-xl font-semibold">{a.who}</h2>
-              <p className="mt-2 text-fg-2">{a.detail}</p>
-            </div>
-          ))}
+        <p className="eyebrow">Why GRC Flow</p>
+        <h2 className="mt-2 max-w-3xl text-3xl font-bold sm:text-[2rem]">Your experts spend their time on judgement, not formatting</h2>
+        <div className="mt-8 overflow-x-auto rounded-[10px] border border-line bg-surface">
+          <table className="w-full min-w-[46rem] border-collapse text-left text-[0.92rem]">
+            <thead>
+              <tr className="border-b border-line">
+                <td className="w-[22%] p-4" />
+                {comparison.columns.map((c, i) => (
+                  <th key={c} scope="col" className={`p-4 font-semibold ${i === 2 ? "bg-accent-soft text-info" : "text-fg-2"}`}>{c}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.rows.map((r) => (
+                <tr key={r.what} className="border-b border-line last:border-0">
+                  <th scope="row" className="p-4 font-semibold">{r.what}</th>
+                  {r.values.map((v, i) => (
+                    <td key={v} className={`p-4 ${i === 2 ? "bg-accent-soft/60 font-medium text-fg" : "text-muted"}`}>
+                      {i === 2 ? <span className="flex gap-2"><Icon name="check" className="mt-0.5 size-4 text-good" />{v}</span> : v}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <div className="card mt-4 flex flex-col gap-5 p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
+      </section>
+
+      <section className="border-y border-line bg-surface">
+        <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-16 sm:px-8 md:py-20 lg:grid-cols-[1fr_2fr]">
           <div>
-            <h2 className="text-2xl font-bold">See it with sample clients</h2>
-            <p className="mt-1 text-fg-2">Six clients at every stage, from intake to delivered. No sign-up needed.</p>
+            <p className="eyebrow">Security</p>
+            <h2 className="mt-2 text-3xl font-bold sm:text-[2rem]">A compliance tool has to practise what it checks</h2>
+            <p className="mt-3 text-lg text-fg-2">GRC Flow is hosted in India, in the Mumbai region. Your clients&apos; data stays in your workspace.</p>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <ButtonLink href={site.appUrl}>Open GRC Flow</ButtonLink>
-            <ButtonLink href="/contact" variant="secondary">Book a demo</ButtonLink>
+          <dl className="grid gap-x-8 sm:grid-cols-2">
+            {security.map((s) => (
+              <div key={s.area} className="border-t border-line py-4">
+                <dt className="flex items-center gap-2 font-semibold"><Icon name="lock" className="size-4 text-accent" />{s.area}</dt>
+                <dd className="mt-1 text-[0.92rem] text-fg-2">{s.how}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
+        <div className="card grid gap-10 p-6 sm:p-10 lg:grid-cols-[1fr_1.3fr] lg:items-center">
+          <div>
+            <h2 className="text-3xl font-bold">Try it on one real client</h2>
+            <p className="mt-3 text-lg text-fg-2">A four-week pilot on one of your own engagements, with a check-in call each week.</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink href="/contact">Book a demo</ButtonLink>
+              <ButtonLink href={site.appUrl} variant="secondary">Sign in to GRC Flow</ButtonLink>
+            </div>
           </div>
+          <ol className="relative space-y-5 border-l-2 border-line pl-6">
+            {pilot.map((p) => (
+              <li key={p.when} className="relative">
+                <span className="absolute top-1.5 -left-[1.95rem] size-3 rounded-full border-2 border-accent bg-surface" aria-hidden />
+                <p className="font-semibold">{p.when}</p>
+                <p className="text-fg-2">{p.what}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
     </>
