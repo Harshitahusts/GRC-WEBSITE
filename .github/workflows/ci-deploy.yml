@@ -1,0 +1,91 @@
+name: CI and deploy
+
+# Every pull request and push: type-check and build the site, and build its Docker image.
+# A push to main then deploys it to the Oracle server (grc-flow.com), the same way as the
+# app's repository (Harshitahusts/GRC-Ai, .github/workflows/deploy.yml). Deploy by hand,
+# optionally with branches, from Actions > CI and deploy > Run workflow.
+#
+# Needs four repository secrets, printed by `bash deploy/enable-ci.sh` on the server:
+# DEPLOY_HOST, DEPLOY_USER, DEPLOY_KNOWN_HOSTS and DEPLOY_SSH_KEY. Until they're added,
+# the deploy is skipped instead of failing.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      branches:
+        description: "Also deploy branches on top of main: all, or names separated by commas. Leave empty for main only."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Type-check
+        run: npx tsc --noEmit
+      - name: Build
+        run: npm run build
+      - name: Docker image builds
+        run: docker build -t grc-flow-website:ci .
+
+  deploy:
+    needs: check
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    env:
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+      DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      BRANCHES: ${{ github.event.inputs.branches }}
+      SITE_URL: ${{ vars.SITE_URL || 'https://grc-flow.com' }}
+    steps:
+      - name: Check the deploy settings
+        id: ready
+        run: |
+          if [ -z "$DEPLOY_HOST" ] || [ -z "$DEPLOY_USER" ] || [ -z "$DEPLOY_KNOWN_HOSTS" ] || [ -z "$DEPLOY_SSH_KEY" ]; then
+            echo "::notice::Deploy skipped: add DEPLOY_HOST, DEPLOY_USER, DEPLOY_KNOWN_HOSTS and DEPLOY_SSH_KEY (run deploy/enable-ci.sh from GRC-Ai on the server)."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to the server
+        if: steps.ready.outputs.ok == 'true'
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          request="deploy"
+          if [ -n "$BRANCHES" ]; then request="deploy branches $BRANCHES"; fi
+          echo "Asking the server to: $request"
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes -o ServerAliveInterval=30 \
+            "$DEPLOY_USER@$DEPLOY_HOST" "$request"
+
+      - name: Check the live site
+        if: steps.ready.outputs.ok == 'true'
+        run: |
+          for i in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "$SITE_URL" || true)
+            if [ "$code" = "200" ]; then echo "$SITE_URL: OK"; exit 0; fi
+            sleep 10
+          done
+          echo "::error::$SITE_URL didn't answer 200 within 5 minutes (last: $code)."
+          exit 1
