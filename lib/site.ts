@@ -11,14 +11,6 @@ export const site = {
   demoFormEndpoint: "",
   // The GRC Flow app, where customers sign in. The "Sign in" links go here.
   appUrl: process.env.NEXT_PUBLIC_APP_URL || "https://app.grc-flow.com",
-  // Optional: the app's demo workspace (start-demo.bat in the GRC-Ai folder, port 8001),
-  // shown on /demo next to the guided tour. Set NEXT_PUBLIC_APP_DEMO_URL when it's hosted. Left empty, the "Real app" tab only appears when the site is
-  // opened on this computer or the office network: it then uses the same host name,
-  // port 8001, because the app's sign-in cookie only works inside the page when both
-  // share a host name. On the live site, /demo shows the guided tour only.
-  appDemoUrl: process.env.NEXT_PUBLIC_APP_DEMO_URL ?? "",
-  appDemoPort: 8001,
-  appDemoLogin: { user: "demo", password: "grc-demo-2026" },
   // POST endpoint for privacy requests (access, deletion, unsubscribe...).
   // Leave empty and the form opens a pre-filled email to business.privacyEmail.
   privacyRequestEndpoint: "",
@@ -51,7 +43,6 @@ export const legalNav = [
 
 export const nav = [
   { href: "/product", label: "Product" },
-  { href: "/demo", label: "Live demo" },
   { href: "/connectors", label: "Connectors" },
   { href: "/pricing", label: "Pricing" },
 ];

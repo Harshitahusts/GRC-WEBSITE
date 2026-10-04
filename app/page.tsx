@@ -1,12 +1,10 @@
-import Link from "next/link";
 import { ButtonLink } from "@/components/buttons";
 import { DeadlineClock } from "@/components/deadline-countdown";
-import { DashboardPreview } from "@/components/demo/preview";
 import { Icon } from "@/components/icon";
-import { analystAnswers } from "@/lib/demo-data";
-import { areas, audiences, detectors, discoveryPromises, documentsDrafted, heroPoints, penalties, timeline, workflow } from "@/lib/content";
+import { site } from "@/lib/site";
+import { analystExample, areas, audiences, detectors, discoveryPromises, documentsDrafted, heroPoints, penalties, timeline, workflow } from "@/lib/content";
 
-const sample = analystAnswers[1];
+const sample = analystExample;
 
 export default function Home() {
   return (
@@ -22,7 +20,7 @@ export default function Home() {
               <DeadlineClock />
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink href="/demo">Try the live demo</ButtonLink>
+              <ButtonLink href={site.appUrl}>Open GRC Flow</ButtonLink>
               <ButtonLink href="/contact" variant="secondary">Book a demo</ButtonLink>
             </div>
             <ul className="mt-8 max-w-[30rem] space-y-3">
@@ -34,9 +32,18 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <Link href="/demo" aria-label="Open the live demo dashboard" className="block rounded-xl transition-transform hover:-translate-y-0.5">
-            <DashboardPreview />
-          </Link>
+          <a href={site.appUrl} aria-label="Open GRC Flow" className="block rounded-xl transition-transform hover:-translate-y-0.5">
+            {/* A real screenshot of the app's dashboard, with its sample clients. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/screens/dashboard.png"
+              width={1440}
+              height={900}
+              alt="The GRC Flow dashboard: engagements in progress, average readiness, critical risks, personal data mapped and the work that needs attention"
+              className="w-full rounded-xl border border-white/10 shadow-float"
+              fetchPriority="high"
+            />
+          </a>
         </div>
       </section>
 
@@ -89,9 +96,10 @@ export default function Home() {
           <p className="mt-3 text-lg text-fg-2">
             The Analyst reads the workspace&apos;s engagements, findings, risks, evidence and data flows, and follows an auditor&apos;s workflow: planning, fieldwork, evidence, risk and reporting. It can&apos;t change anything.
           </p>
-          <ButtonLink href="/demo#analyst" variant="secondary" className="mt-6">Try the Analyst</ButtonLink>
+          <ButtonLink href={site.appUrl} variant="secondary" className="mt-6">Open GRC Flow</ButtonLink>
         </div>
         <div className="card space-y-3 p-5">
+          <p className="text-xs font-semibold tracking-wide text-fg-2 uppercase">Example answer</p>
           <p className="ml-auto w-fit max-w-[85%] rounded-[10px] rounded-br-sm bg-accent px-3.5 py-2 text-white">{sample.q}</p>
           <div className="flex gap-3">
             <span className="grid size-8 shrink-0 place-items-center rounded-full bg-accent-soft text-accent"><Icon name="spark" className="size-4" /></span>
@@ -197,7 +205,7 @@ export default function Home() {
             <p className="mt-1 text-fg-2">Six clients at every stage, from intake to delivered. No sign-up needed.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href="/demo">Try the live demo</ButtonLink>
+            <ButtonLink href={site.appUrl}>Open GRC Flow</ButtonLink>
             <ButtonLink href="/contact" variant="secondary">Book a demo</ButtonLink>
           </div>
         </div>

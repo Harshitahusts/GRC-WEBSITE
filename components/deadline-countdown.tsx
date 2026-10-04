@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Icon } from "./icon";
 
@@ -102,11 +101,9 @@ export function DeadlineClock() {
   );
 }
 
-/** Thin strip above the header on every page except the live demo. */
+/** Thin strip above the header on every page. */
 export function DeadlineStrip() {
   const left = useCountdown();
-  const path = usePathname();
-  if (path.startsWith("/demo")) return null;
 
   return (
     <aside aria-label="DPDP Act deadline" className="bg-[#2a0f12] text-[#ffd9d3]">

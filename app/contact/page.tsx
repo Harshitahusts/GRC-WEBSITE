@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Suspense } from "react";
 import { ContactForm } from "@/components/contact-form";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Book a demo",
@@ -18,7 +18,7 @@ export default function ContactPage() {
           In 30 minutes we take a sample client from intake to delivery, and show the risk register, data-flow map and GRC Analyst on the way.
         </p>
         <p className="mt-6 text-fg-2">
-          Want to look around first? <Link href="/demo" className="font-semibold text-accent underline-offset-2 hover:underline">Open the live demo</Link>.
+          Already a customer? <a href={site.appUrl} className="font-semibold text-accent underline-offset-2 hover:underline">Sign in to GRC Flow</a>.
         </p>
       </div>
       <div className="card p-6 sm:p-8">

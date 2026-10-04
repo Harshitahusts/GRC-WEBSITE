@@ -9,8 +9,6 @@ import { Logo } from "./logo";
 
 export function Header() {
   const path = usePathname();
-  // The live demo brings its own app chrome.
-  if (path.startsWith("/demo")) return null;
   return (
     // The deadline strip and the menu stay pinned to the top together while scrolling.
     <div className="sticky top-0 z-30">
