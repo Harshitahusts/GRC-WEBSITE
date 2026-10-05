@@ -387,8 +387,8 @@ export const comparison = {
 };
 
 export const security = [
-  { area: "Hosting", how: "Cloud server in Mumbai, India. The Firm plan can also run on your own servers." },
-  { area: "Connection", how: "HTTPS everywhere, with certificates renewed automatically." },
+  { area: "Security testing", how: "Vulnerability assessment and penetration test (VAPT) in October 2026, covering the app and this website. Every finding was fixed." },
+  { area: "Hosting", how: "Cloud server in Mumbai, India, served only over HTTPS. The Firm plan can also run on your own servers." },
   { area: "Sign-in", how: "Hashed passwords, lockout after repeated failed attempts, secure session cookies." },
   { area: "Access", how: "Admin, member and viewer roles. Evidence downloads only when signed in." },
   { area: "Secrets", how: "Connector keys and AI provider keys are stored encrypted." },
