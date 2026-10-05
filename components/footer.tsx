@@ -12,7 +12,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-12 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="max-w-sm">
           <Logo tone="dark" />
-          <p className="mt-4 text-side-muted">{site.tagline}.</p>
+          <p className="mt-4 text-side-muted">{site.tagline}</p>
           <p className="mt-3 text-side-muted">
             A product of <span className="text-side-text">{business.parent}</span>, {business.city}.
           </p>

@@ -1,7 +1,7 @@
 // Site-wide settings. Change the brand, contact details and form endpoint here.
 export const site = {
   name: "GRC-Flow",
-  tagline: "Protecting India's data, one obligation at a time",
+  tagline: "Every risk. One flow.",
   description:
     "A workspace for running DPDP Act readiness assessments: guided intake, cited findings, reviewed documents, a risk register, data-flow maps and a GRC Analyst that cites the Act and Rules.",
   url: "https://grc-flow.com",
