@@ -15,7 +15,7 @@ const sections: Section[] = [
     body: (
       <>
         <p>
-          This website is run by <strong>{business.legalName}</strong> (&ldquo;{site.name}&rdquo;, &ldquo;we&rdquo;), {business.address}. CIN {business.cin}, GSTIN {business.gstin}.
+          This website is run by <strong>{business.legalName}</strong> (&ldquo;{site.name}&rdquo;, &ldquo;we&rdquo;), {business.city}.
         </p>
         <p>
           For the personal data described here we are the <strong>Data Fiduciary</strong> under the Digital Personal Data Protection Act, 2023 (the &ldquo;DPDP Act&rdquo;). Questions about your data go to <a href={`mailto:${business.privacyEmail}`}>{business.privacyEmail}</a>.
@@ -130,7 +130,7 @@ const sections: Section[] = [
     title: "Grievance Officer",
     body: (
       <p>
-        <strong>{business.grievanceOfficer.name}</strong>, <a href={`mailto:${business.grievanceOfficer.email}`}>{business.grievanceOfficer.email}</a>, {business.address}.
+        Questions or complaints about your personal data go to our Grievance Officer at <a href={`mailto:${business.grievanceOfficer.email}`}>{business.grievanceOfficer.email}</a> ({business.legalName}, {business.city}). We reply within 90 days.
       </p>
     ),
   },

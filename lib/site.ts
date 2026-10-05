@@ -17,18 +17,14 @@ export const site = {
 };
 
 // Business details shown in the footer, the About page and the legal pages.
-// TODO before launch: replace every value in square brackets with the real details,
-// and confirm the exact registered name (for example "... Private Limited").
 export const business = {
-  legalName: "Suscin Innovation Labs",
-  parent: "Suscin Innovation Labs",
+  legalName: "Suscin Innovation Labs LLP",
+  parent: "Suscin Innovation Labs LLP",
   city: "Pune, Maharashtra, India",
-  address: "[Registered office address], Pune, Maharashtra, India",
-  cin: "[CIN]",
-  gstin: "[GSTIN]",
   privacyEmail: "talk@grc-flow.com",
-  // DPDP Act Section 8(9) and Rule 9: publish who answers questions about personal data.
-  grievanceOfficer: { name: "[Grievance Officer name]", email: "talk@grc-flow.com" },
+  // DPDP Act Section 8(9) and Rule 9: publish the business contact of the person who
+  // answers questions about personal data.
+  grievanceOfficer: { email: "talk@grc-flow.com" },
   jurisdiction: "Pune, India",
   policiesUpdated: "2 October 2026",
 };
