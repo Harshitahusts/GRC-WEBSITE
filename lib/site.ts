@@ -16,6 +16,9 @@ export const site = {
   // POST endpoint for privacy requests (access, deletion, unsubscribe...).
   // Leave empty and the form opens a pre-filled email to business.privacyEmail.
   privacyRequestEndpoint: "",
+  // Latest vulnerability assessment and penetration test (report: GRC-Ai
+  // docs/SECURITY_REVIEW_2026-10.md). Update the date after each new test.
+  vapt: { date: "October 2026" },
 };
 
 // Business details shown in the footer, the About page and the legal pages.

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { openCookieSettings } from "@/lib/consent";
 import { business, legalNav, nav, site } from "@/lib/site";
 import { IndiaFlag } from "./india-flag";
+import { VaptBadge } from "./vapt-badge";
 import { Logo } from "./logo";
 
 export function Footer() {
@@ -13,6 +14,7 @@ export function Footer() {
         <div className="max-w-sm">
           <Logo tone="dark" />
           <p className="mt-4 text-side-muted">{site.tagline}</p>
+          <VaptBadge tone="dark" className="mt-4" />
           <p className="mt-3 text-side-muted">
             A product of <span className="text-side-text">{business.parent}</span>, {business.city}.
           </p>

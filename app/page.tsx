@@ -2,6 +2,7 @@ import { AgentJourney } from "@/components/agent-journey";
 import { AudienceFlows } from "@/components/audience-flows";
 import { PlatformHub } from "@/components/platform-hub";
 import { ButtonLink } from "@/components/buttons";
+import { VaptBadge } from "@/components/vapt-badge";
 import { DeadlineClock } from "@/components/deadline-countdown";
 import { Icon } from "@/components/icon";
 import { site } from "@/lib/site";
@@ -272,6 +273,7 @@ export default function Home() {
             <p className="eyebrow">Security</p>
             <h2 className="mt-2 text-3xl font-bold sm:text-[2rem]">A compliance tool has to practise what it checks</h2>
             <p className="mt-3 text-lg text-fg-2">GRC Flow is hosted in India, in the Mumbai region. Your clients&apos; data stays in your workspace.</p>
+            <VaptBadge className="mt-5" />
           </div>
           <dl className="grid gap-x-8 sm:grid-cols-2">
             {security.map((s) => (
