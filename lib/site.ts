@@ -8,6 +8,8 @@ export const site = {
   email: "talk@grc-flow.com",
   // POST endpoint for the demo form (e.g. a Brevo or Formspree form URL).
   // Leave empty and the form opens a pre-filled email to `email` instead.
+  // If you set one (or privacyRequestEndpoint), add its host to connect-src in the
+  // website's Content-Security-Policy (GRC-Ai deploy/Caddyfile), or the browser blocks it.
   demoFormEndpoint: "",
   // The GRC Flow app, where customers sign in. The "Sign in" links go here.
   appUrl: process.env.NEXT_PUBLIC_APP_URL || "https://app.grc-flow.com",
