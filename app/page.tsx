@@ -15,7 +15,8 @@ export default function Home() {
       <section className="night">
         <div className="mx-auto grid max-w-[1240px] gap-12 px-4 py-14 sm:px-8 md:py-20 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div>
-            <p className="eyebrow">India&apos;s DPDP Act 2023 &amp; Rules 2025</p>
+            <p className="text-lg font-semibold text-night-eyebrow">{site.tagline}</p>
+            <p className="eyebrow mt-4">India&apos;s DPDP Act 2023 &amp; Rules 2025</p>
             <h1 className="mt-3 max-w-[30rem] text-[2.1rem] leading-[1.15] font-bold text-white sm:text-[2.6rem]">
               DPDPA readiness assessments, drafted for you, verified by you.
             </h1>

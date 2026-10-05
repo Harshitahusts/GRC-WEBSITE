@@ -61,7 +61,7 @@ export function Footer() {
           </p>
         </div>
         <p className="text-[0.95rem] text-side-text">
-          Made with <span role="img" aria-label="love">❤️</span> by Indians, for India, in India <IndiaFlag />
+          Made with <span role="img" aria-label="love">❤️</span> by Indians, for India, in India <IndiaFlag />, to keep India&apos;s data safe.
         </p>
       </div>
     </footer>
