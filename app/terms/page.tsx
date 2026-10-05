@@ -14,7 +14,7 @@ const sections: Section[] = [
     title: "About these terms",
     body: (
       <p>
-        These terms cover your use of this website and its live demo, run by <strong>{business.legalName}</strong>, {business.address}. By using the site you agree to them. Paid use of {site.name} is covered by a separate written agreement, which takes priority over these terms.
+        These terms cover your use of this website and its live demo, run by <strong>{business.legalName}</strong>, {business.city}. By using the site you agree to them. Paid use of {site.name} is covered by a separate written agreement, which takes priority over these terms.
       </p>
     ),
   },

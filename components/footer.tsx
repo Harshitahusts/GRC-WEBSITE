@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { openCookieSettings } from "@/lib/consent";
 import { business, legalNav, nav, site } from "@/lib/site";
+import { IndiaFlag } from "./india-flag";
 import { Logo } from "./logo";
 
 export function Footer() {
@@ -47,14 +48,20 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto max-w-[1240px] space-y-1.5 border-t border-[#262930] px-4 py-6 text-sm text-side-muted sm:px-8">
-        <p>
-          © {new Date().getFullYear()} {business.legalName}. {business.address}. CIN {business.cin}. GSTIN {business.gstin}.
-        </p>
-        <p>
-          Grievance Officer: {business.grievanceOfficer.name},{" "}
-          <a href={`mailto:${business.grievanceOfficer.email}`} className="underline hover:text-white">{business.grievanceOfficer.email}</a>.
-          Compliance software, not legal advice.
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-4 border-t border-[#262930] px-4 py-6 text-sm text-side-muted sm:px-8 md:flex-row md:items-end md:justify-between">
+        <div className="space-y-1.5">
+          <p>
+            © {new Date().getFullYear()} {business.legalName}, {business.city}.{" "}
+            <Link href="/about" className="underline hover:text-white">About us</Link>
+          </p>
+          <p>
+            Grievance Officer:{" "}
+            <a href={`mailto:${business.grievanceOfficer.email}`} className="underline hover:text-white">{business.grievanceOfficer.email}</a>.
+            Compliance software, not legal advice.
+          </p>
+        </div>
+        <p className="text-[0.95rem] text-side-text">
+          Made with <span role="img" aria-label="love">❤️</span> by Indians, for India, in India <IndiaFlag /> <strong className="font-semibold text-white">Jai Hind</strong>
         </p>
       </div>
     </footer>

@@ -7,7 +7,7 @@ Every marketing or product update email must include this footer. Send updates o
   You're getting this because you asked for GRC-Flow product updates.
   <a href="https://grc-flow.com/unsubscribe?email={{email}}">Unsubscribe</a>
   · <a href="https://grc-flow.com/privacy">Privacy policy</a><br>
-  GRC-Flow, a product of Suscin Innovation Labs, Pune, India · talk@grc-flow.com
+  GRC-Flow, a product of Suscin Innovation Labs LLP, Pune, India · talk@grc-flow.com
 </p>
 ```
 

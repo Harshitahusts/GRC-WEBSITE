@@ -29,7 +29,7 @@ export default function PrivacyRequestPage() {
             <li>We respond as soon as we can, and within 90 days.</li>
           </ol>
           <p>
-            Not happy with our answer? Contact our Grievance Officer, {business.grievanceOfficer.name}, at{" "}
+            Not happy with our answer? Contact our Grievance Officer at{" "}
             <a className="text-accent underline" href={`mailto:${business.grievanceOfficer.email}`}>{business.grievanceOfficer.email}</a>. After that, you can complain to the Data Protection Board of India.
           </p>
         </aside>
