@@ -7,7 +7,7 @@ import { Icon } from "./icon";
 // The DPDP Act's main duties apply from 13 May 2027 (DPDP Rules, 2025).
 // Midnight in India Standard Time (Asia/Kolkata, UTC+05:30), so every visitor
 // counts down to the same instant whatever their own time zone.
-export const DPDP_DEADLINE = new Date("2027-05-13T00:00:00+05:30");
+const DPDP_DEADLINE = new Date("2027-05-13T00:00:00+05:30");
 
 type Left = { days: number; hours: number; minutes: number; seconds: number; done: boolean };
 

@@ -2,9 +2,9 @@
 // Load any analytics or marketing script only after hasConsent() says yes,
 // and listen for CONSENT_EVENT to react when the visitor changes their mind.
 
-export type Category = "necessary" | "analytics" | "marketing";
+type Category = "necessary" | "analytics" | "marketing";
 
-export type Consent = {
+type Consent = {
   version: number;
   necessary: true;
   analytics: boolean;
@@ -32,10 +32,12 @@ export const categories: { id: Category; name: string; body: string; required?: 
 ];
 
 // Bump when the categories or their purposes change, so everyone is asked again.
-export const CONSENT_VERSION = 1;
+const CONSENT_VERSION = 1;
 const COOKIE = "grcflow_consent";
 const MAX_AGE = 60 * 60 * 24 * 180; // ask again after six months
 
+// Fired on window when someone saves their choice; listen for it to start or stop
+// analytics without a page reload.
 export const CONSENT_EVENT = "grcflow:consent";
 export const OPEN_SETTINGS_EVENT = "grcflow:open-cookie-settings";
 
@@ -59,6 +61,7 @@ export function saveConsent(choice: { analytics: boolean; marketing: boolean }):
   return consent;
 }
 
+// Check this before loading any analytics or marketing script (none are loaded today).
 export function hasConsent(category: Category): boolean {
   if (category === "necessary") return true;
   return readConsent()?.[category] === true;

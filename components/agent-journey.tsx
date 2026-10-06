@@ -51,10 +51,14 @@ export function AgentJourney() {
     return () => io.disconnect();
   }, []);
 
-  // While paused, show the step's whole log so it can be read; play resumes after it.
-  useEffect(() => {
-    if (!running) setShown((n) => Math.max(n, current.log.length));
-  }, [running, current.log.length]);
+  // When it pauses, show the step's whole log so it can be read; play resumes after it.
+  // Done while rendering (React's pattern for adjusting state when a value changes),
+  // not in an effect, so the full log appears without an extra render.
+  const [wasRunning, setWasRunning] = useState(running);
+  if (running !== wasRunning) {
+    setWasRunning(running);
+    if (!running && shown < current.log.length) setShown(current.log.length);
+  }
 
   useEffect(() => {
     if (!running) return;

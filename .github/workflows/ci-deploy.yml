@@ -1,9 +1,10 @@
 name: CI and deploy
 
-# Every pull request and push: type-check and build the site, and build its Docker image.
-# A push to main then deploys it to the Oracle server (grc-flow.com), the same way as the
-# app's repository (Harshitahusts/GRC-Ai, .github/workflows/deploy.yml). Deploy by hand,
-# optionally with branches, from Actions > CI and deploy > Run workflow.
+# Every pull request and push: audit dependencies, lint, type-check and build the site,
+# and build its Docker image. A push to main then deploys it to the Oracle server
+# (grc-flow.com), the same way as the app's repository (Harshitahusts/GRC-Ai,
+# .github/workflows/deploy.yml). Deploy by hand, optionally with branches, from
+# Actions > CI and deploy > Run workflow.
 #
 # Needs four repository secrets, printed by `bash deploy/enable-ci.sh` on the server:
 # DEPLOY_HOST, DEPLOY_USER, DEPLOY_KNOWN_HOSTS and DEPLOY_SSH_KEY. Until they're added,
@@ -34,6 +35,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
+      - name: Dependency vulnerabilities
+        run: npm audit
+      - name: Lint (including security rules)
+        run: npm run lint
       - name: Type-check
         run: npx tsc --noEmit
       - name: Build
