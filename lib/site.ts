@@ -34,6 +34,14 @@ export const business = {
   policiesUpdated: "2 October 2026",
 };
 
+// When the pages last changed in a way a reader would notice, as YYYY-MM-DD. The sitemap
+// sends these to search engines, which use them to decide when to crawl a page again, so
+// change the date whenever you change that page's content.
+export const pagesUpdated = {
+  marketing: "2026-10-06", // home, product, connectors, pricing, about, contact
+  policies: "2026-10-02", // privacy, terms, cookies, data rights, accessibility
+};
+
 export const legalNav = [
   { href: "/privacy", label: "Privacy policy" },
   { href: "/terms", label: "Terms of service" },
