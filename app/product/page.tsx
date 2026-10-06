@@ -6,7 +6,8 @@ import { areas, workflow } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Product",
+  alternates: { canonical: "/product" },
+  title: "DPDP Compliance Software: Features",
   description: "Intake, cited findings, reviewed documents and hard-stop delivery, plus privacy operations, compliance and risk registers for the DPDP Act.",
 };
 

@@ -49,3 +49,13 @@ Changing the categories or what they're used for? Bump `CONSENT_VERSION` in `lib
 When a connector goes live in the app, set `live: true` on it in `lib/content.ts`.
 
 The demo form opens a pre-filled email until `demoFormEndpoint` in `lib/site.ts` is set to a form backend URL (Brevo, Formspree, etc.).
+
+## Blog
+
+Posts live in `lib/blog/posts/<slug>.tsx`, one file each (copy an existing post as a template),
+and are listed in `lib/blog/index.ts`. Each post has a title (under ~60 characters), a search
+description (~150 characters), key takeaways, FAQs and sources; the page adds Article, FAQ and
+breadcrumb structured data, and the post appears in `/sitemap.xml`, `/blog/rss.xml` and the blog
+index automatically. A post with a future `published` date stays hidden until that day's build.
+Add new posts to `public/llms.txt` too. Facts about the law should cite the Act, the Rules or a
+reputable source, and every post ends with a not-legal-advice note.

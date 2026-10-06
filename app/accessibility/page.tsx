@@ -3,6 +3,7 @@ import { LegalPage, type Section } from "@/components/legal-page";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/accessibility" },
   title: "Accessibility",
   description: `How ${site.name} makes this website usable for everyone, and how to report a problem.`,
 };

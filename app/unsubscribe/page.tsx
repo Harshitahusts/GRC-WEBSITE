@@ -4,6 +4,7 @@ import { PageHead } from "@/components/page-head";
 import { PrivacyRequestForm } from "@/components/privacy-request-form";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/unsubscribe" },
   title: "Unsubscribe",
   description: "Stop receiving product update emails.",
   robots: { index: false },

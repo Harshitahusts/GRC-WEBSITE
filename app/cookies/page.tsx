@@ -6,6 +6,7 @@ import { categories } from "@/lib/consent";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/cookies" },
   title: "Cookie policy",
   description: `The cookies ${site.name} uses, why, and how to change your choice.`,
 };

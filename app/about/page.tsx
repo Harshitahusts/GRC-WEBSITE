@@ -5,6 +5,7 @@ import { PageHead } from "@/components/page-head";
 import { business, site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About us",
   description: `${site.name} is a DPDP Act readiness workspace from ${business.parent}, based in Pune, India.`,
 };

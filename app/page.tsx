@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AgentJourney } from "@/components/agent-journey";
 import { AudienceFlows } from "@/components/audience-flows";
 import { PlatformHub } from "@/components/platform-hub";
@@ -7,6 +8,13 @@ import { DeadlineClock } from "@/components/deadline-countdown";
 import { Icon } from "@/components/icon";
 import { site } from "@/lib/site";
 import { aiRules, analystExample, areas, comparison, detectors, discoveryPromises, documentsDrafted, heroPoints, penalties, pilot, security, selfCompliance, timeline } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: { absolute: "GRC-Flow | DPDP Compliance Software & GRC Tool for India" },
+  description:
+    "DPDP Act compliance software for Indian businesses and consultants: guided gap assessments, AI findings citing the Act, evidence and breach tracking. Hosted in India.",
+  alternates: { canonical: "/" },
+};
 
 const sample = analystExample;
 

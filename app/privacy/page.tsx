@@ -4,6 +4,7 @@ import { LegalPage, type Section } from "@/components/legal-page";
 import { business, site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy" },
   title: "Privacy policy",
   description: `How ${site.name} collects, uses and protects personal data under India's DPDP Act, 2023.`,
 };

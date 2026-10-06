@@ -5,7 +5,8 @@ import { PageHead } from "@/components/page-head";
 import { faqs, plans } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  alternates: { canonical: "/pricing" },
+  title: "Pricing: DPDP Compliance Software Plans",
   description: "Plans for independent consultants, consultancies and larger firms running DPDPA assessments.",
 };
 
