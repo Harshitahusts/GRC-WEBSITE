@@ -4,7 +4,8 @@ import { ContactForm } from "@/components/contact-form";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Book a demo",
+  alternates: { canonical: "/contact" },
+  title: "Book a Demo of GRC-Flow DPDP Compliance Software",
   description: "See a DPDPA engagement run end to end in a 30-minute call.",
 };
 

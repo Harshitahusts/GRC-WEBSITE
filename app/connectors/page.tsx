@@ -4,7 +4,8 @@ import { PageHead } from "@/components/page-head";
 import { connectors } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Connectors",
+  alternates: { canonical: "/connectors" },
+  title: "Connectors: Automated DPDP Evidence from AWS and GitHub",
   description: "Read-only GitHub and AWS checks that back DPDPA findings with evidence, with more connectors on the way.",
 };
 

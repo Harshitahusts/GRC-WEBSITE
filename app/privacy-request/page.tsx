@@ -5,6 +5,7 @@ import { PrivacyRequestForm } from "@/components/privacy-request-form";
 import { business } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy-request" },
   title: "Your data rights",
   description: "Ask for a summary, correction or deletion of your personal data, withdraw consent, nominate someone or raise a grievance.",
 };

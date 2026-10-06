@@ -4,8 +4,9 @@ import { LegalPage, type Section } from "@/components/legal-page";
 import { business, site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/terms" },
   title: "Terms of service",
-  description: `The terms for using the ${site.name} website and live demo.`,
+  description: `The terms for using the ${site.name} website and app.`,
 };
 
 const sections: Section[] = [
