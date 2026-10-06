@@ -19,8 +19,11 @@ export function CookieConsent() {
   const path = usePathname();
 
   useEffect(() => {
-    // Ask only when there's no saved choice for the current categories.
+    // Ask only when there's no saved choice for the current categories. The choice lives
+    // in a browser cookie, so it can only be read after the page loads, never while the
+    // server renders it; reading it here, once, is the intended use of an effect.
     const saved = readConsent();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDecided(!!saved);
     if (!saved) setStep("banner");
     const open = () => {

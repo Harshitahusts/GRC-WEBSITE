@@ -88,30 +88,12 @@ export const discoveryPromises = [
   "Ages under 18 are flagged as children's data under Section 9.",
 ];
 
-export const analystPrompts = [
-  "What should I work on today?",
-  "Summarise Arogya Health Clinics for management",
-  "What evidence should I request?",
-  "Draft the audit report",
-];
-
 export const documentsDrafted = [
   { name: "Gap report", note: "Every obligation, its status and what to fix" },
   { name: "Record of processing (RoPA)", note: "From the data inventory" },
   { name: "Privacy notice", note: "Built from the intake answers" },
   { name: "Breach playbook", note: "With the Board's reporting deadlines" },
   { name: "Data processing agreement", note: "Marked draft for the client's lawyer" },
-];
-
-export const audiences = [
-  {
-    who: "Privacy and GRC consultants",
-    detail: "Run DPDPA readiness assessments for many clients at once. The dashboard shows every client's stage, readiness score and top risks.",
-  },
-  {
-    who: "In-house compliance teams",
-    detail: "Treat each business unit or entity as an engagement and keep one register of risks, evidence and requests across the group.",
-  },
 ];
 
 export const timeline = [
@@ -129,7 +111,7 @@ export const penalties = [
   { amount: "₹50 crore", for: "Breaching any other provision of the Act or Rules" },
 ];
 
-export type Connector = { name: string; category: string; checks: string; live: boolean };
+type Connector = { name: string; category: string; checks: string; live: boolean };
 
 export const connectors: Connector[] = [
   { name: "GitHub", category: "Version control", checks: "Repository visibility, default branch protection and secret scanning.", live: true },
@@ -158,7 +140,7 @@ export const connectors: Connector[] = [
   { name: "Zoho CRM", category: "Business apps", checks: "Customer records and consent fields.", live: false },
 ];
 
-export type Plan = { name: string; for: string; scope: string; includes: string[] };
+type Plan = { name: string; for: string; scope: string; includes: string[] };
 
 export const plans: Plan[] = [
   {
@@ -238,7 +220,7 @@ export const analystExample = {
 // clients, people and numbers in the log are made-up examples.
 
 export type LogTone = "info" | "ai" | "pass" | "fail" | "person";
-export type JourneyStep = {
+type JourneyStep = {
   title: string;
   short: string;
   you: string;
@@ -431,7 +413,7 @@ export const hub = {
 // Each step shows a document in the app with the details GRC Flow fills in highlighted.
 // Clients, people and numbers are made-up examples.
 
-export type FlowStep = {
+type FlowStep = {
   label: string;
   heading: string;
   body: string;
