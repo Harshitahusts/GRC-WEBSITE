@@ -7,7 +7,7 @@ import { faqs, plans } from "@/lib/content";
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
   title: "Pricing: DPDP Compliance Software Plans",
-  description: "Plans for independent consultants, consultancies and larger firms running DPDPA assessments.",
+  description: "Plans for independent consultants, consultancies and larger firms running DPDP assessments.",
 };
 
 export default function PricingPage() {

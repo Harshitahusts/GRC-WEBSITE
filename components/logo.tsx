@@ -1,7 +1,7 @@
 import { site } from "@/lib/site";
 import { Icon } from "./icon";
 
-// Same mark as the app: a shield in a blue gradient tile, with "DPDPA" beneath the name.
+// Same mark as the app: a shield in a blue gradient tile, with "DPDP" beneath the name.
 export function Logo({ tone = "light" }: { tone?: "light" | "dark" }) {
   return (
     <span className="flex items-center gap-2.5">
@@ -10,7 +10,7 @@ export function Logo({ tone = "light" }: { tone?: "light" | "dark" }) {
       </span>
       <span className={`flex flex-col leading-[1.15] font-bold tracking-[-0.01em] ${tone === "dark" ? "text-white" : "text-fg"}`}>
         {site.name}
-        <small className={`text-[0.68rem] font-semibold tracking-[0.08em] ${tone === "dark" ? "text-side-muted" : "text-muted"}`}>DPDPA</small>
+        <small className={`text-[0.68rem] font-semibold tracking-[0.08em] ${tone === "dark" ? "text-side-muted" : "text-muted"}`}>DPDP</small>
       </span>
     </span>
   );

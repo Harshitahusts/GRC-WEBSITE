@@ -7,7 +7,7 @@ export const post: Post = {
   title: "DPDP Act Penalties: Up to ₹250 Crore, Explained",
   description:
     "DPDP Act penalties in one table: ₹250 crore for weak security, ₹200 crore for unreported breaches or children's data, ₹150 crore for SDFs, and how fines are set.",
-  keywords: ["dpdp act penalty", "maximum penalty under dpdp act", "dpdp penalties", "dpdpa penalty", "dpdp fine"],
+  keywords: ["dpdp act penalty", "maximum penalty under dpdp act", "dpdp penalties", "dpdp fine"],
   published: "2026-10-06",
   updated: "2026-10-06",
   minutes: 6,

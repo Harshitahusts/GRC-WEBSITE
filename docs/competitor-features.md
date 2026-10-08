@@ -28,13 +28,13 @@ GRC-Flow is now DPDP-only. Other frameworks (SOC 2, ISO 27001, GDPR, HIPAA and s
 
 Since the website redesign, product copy comes from the app itself
 ([Harshitahusts/GRC-Ai](https://github.com/Harshitahusts/GRC-Ai)): its README, connector
-catalogue (`src/grc_agent/connectors/catalog.py`), demo tenant and DPDPA docs. Features the
+catalogue (`src/grc_agent/connectors/catalog.py`), demo tenant and DPDP docs. Features the
 app doesn't have yet (Consent Manager with 22-language notices, CRM integrations and so on)
 are no longer claimed on the site. Only GitHub and AWS are shown as live connectors.
 
 ## Claims on the site to confirm before launch
 
-Legal facts (from the app's own DPDPA docs; have counsel check):
+Legal facts (from the app's own DPDP docs; have counsel check):
 
 - Timeline: assent 11 Aug 2023; Rules notified Nov 2025; Consent Managers Nov 2026; main duties 13 May 2027
 - Penalties: ₹250 / 200 / 200 / 150 / 50 crore

@@ -25,7 +25,7 @@ export default function Home() {
             <p className="text-lg font-semibold text-night-eyebrow">{site.tagline}</p>
             <p className="eyebrow mt-4">India&apos;s DPDP Act 2023 &amp; Rules 2025</p>
             <h1 className="mt-3 max-w-[30rem] text-[2.1rem] leading-[1.15] font-bold text-white sm:text-[2.6rem]">
-              DPDPA readiness assessments, drafted for you, verified by you.
+              DPDP readiness assessments, drafted for you, verified by you.
             </h1>
             <div className="mt-6 max-w-[34rem]">
               <DeadlineClock />

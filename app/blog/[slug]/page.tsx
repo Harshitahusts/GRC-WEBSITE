@@ -135,7 +135,7 @@ export default async function BlogPost({ params }: Props) {
         </div>
 
         <aside className="mt-12 max-w-[46rem] rounded-xl bg-night p-6 text-night-text sm:p-8">
-          <h2 className="text-xl font-bold text-white">Run your DPDPA assessment in GRC Flow</h2>
+          <h2 className="text-xl font-bold text-white">Run your DPDP assessment in GRC Flow</h2>
           <p className="mt-2">
             Guided intake mapped to every obligation in the Act and Rules, AI-drafted findings that cite the section, reviewed by a person, with the evidence to prove it.
           </p>

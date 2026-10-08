@@ -7,7 +7,7 @@ export const post: Post = {
   title: "Is There a DPDP Certification? What Exists, What Doesn't",
   description:
     "There is no government DPDP certificate. What DPDP certification courses and audits really are, what buyers ask for instead, and how to prove compliance.",
-  keywords: ["dpdp certification", "dpdpa certification", "dpdp act certification", "dpdp compliance certificate", "dpdp audit"],
+  keywords: ["dpdp certification", "dpdp act certification", "dpdp compliance certificate", "dpdp audit"],
   published: "2026-10-06",
   updated: "2026-10-06",
   minutes: 6,
@@ -24,7 +24,7 @@ export const post: Post = {
     },
     {
       q: "What is a DPDP certification course?",
-      a: "A training programme for people (for example a 'DPDPA practitioner' course). It certifies that a person completed training; it says nothing about whether an organisation complies.",
+      a: "A training programme for people (for example a 'DPDP practitioner' course). It certifies that a person completed training; it says nothing about whether an organisation complies.",
     },
     {
       q: "What do enterprise customers ask for instead?",

@@ -27,7 +27,7 @@ const workspace: { icon: IconName; title: string; body: string }[] = [
 export default function ProductPage() {
   return (
     <>
-      <PageHead eyebrow="Product" title="One workspace for every DPDPA engagement">
+      <PageHead eyebrow="Product" title="One workspace for every DPDP engagement">
         <p>From the first intake question to a delivered assessment, with the registers, evidence and risk work in between.</p>
       </PageHead>
 

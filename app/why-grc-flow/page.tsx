@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/why-grc-flow" },
   title: "Why GRC Flow: DPDP Assessments Without the Spreadsheets",
   description:
-    "How GRC Flow compares with spreadsheets and generic GRC tools for DPDPA assessments, and a four-week pilot on one of your own clients.",
+    "How GRC Flow compares with spreadsheets and generic GRC tools for DPDP assessments, and a four-week pilot on one of your own clients.",
 };
 
 export default function WhyGrcFlowPage() {

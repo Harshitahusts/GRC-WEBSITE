@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   title: "Book a Demo of GRC-Flow DPDP Compliance Software",
-  description: "See a DPDPA engagement run end to end in a 30-minute call.",
+  description: "See a DPDP engagement run end to end in a 30-minute call.",
 };
 
 export default function ContactPage() {

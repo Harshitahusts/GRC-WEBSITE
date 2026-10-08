@@ -7,7 +7,7 @@ export const post: Post = {
   title: "DPDP Compliance Checklist: 12 Steps Before May 2027",
   description:
     "A practical DPDP compliance checklist: data mapping, notices, consent, security, a 72-hour breach plan, rights requests, vendors, children's data and evidence.",
-  keywords: ["dpdp compliance checklist", "dpdp compliance", "dpdp act compliance", "dpdpa compliance", "how to comply with dpdp act"],
+  keywords: ["dpdp compliance checklist", "dpdp compliance", "dpdp act compliance", "how to comply with dpdp act"],
   published: "2026-10-06",
   updated: "2026-10-06",
   minutes: 10,

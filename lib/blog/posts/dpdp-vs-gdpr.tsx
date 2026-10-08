@@ -7,7 +7,7 @@ export const post: Post = {
   title: "DPDP vs GDPR: 12 Key Differences for Indian Businesses",
   description:
     "DPDP vs GDPR compared: scope, legal grounds, children, breach reporting, DPO, transfers, rights and penalties, and why GDPR compliance isn't DPDP compliance.",
-  keywords: ["dpdp vs gdpr", "gdpr vs dpdp", "difference between dpdp and gdpr", "dpdpa vs gdpr"],
+  keywords: ["dpdp vs gdpr", "gdpr vs dpdp", "difference between dpdp and gdpr"],
   published: "2026-10-06",
   updated: "2026-10-06",
   minutes: 7,

@@ -183,7 +183,7 @@ export const plans: Plan[] = [
 export const faqs = [
   {
     q: "Who is it for?",
-    a: "Privacy and GRC consultants running DPDPA readiness assessments for clients, and in-house teams doing the same across their own business units.",
+    a: "Privacy and GRC consultants running DPDP readiness assessments for clients, and in-house teams doing the same across their own business units.",
   },
   {
     q: "Does client data go to an AI model?",
@@ -345,7 +345,7 @@ export const aiRules = [
   { title: "Delivery stays locked until every check passes", body: "There is no override, so nothing unreviewed reaches a client." },
 ];
 
-// What "self-compliance" means under the DPDPA, and what GRC Flow gives you at each step.
+// What "self-compliance" means under the DPDP Act, and what GRC Flow gives you at each step.
 export const selfCompliance = [
   { step: "Assess", you: "Check yourself against every obligation in the Act and Rules.", tool: "Guided intake mapped to every obligation; AI-drafted gaps citing the exact section." },
   { step: "Fix", you: "Close the gaps: notices, consent, security, contracts, deletion, rights.", tool: "Risk register, readiness plan and tasks with owners and due dates." },
@@ -357,7 +357,7 @@ export const selfCompliance = [
 export const comparison = {
   columns: ["Spreadsheets and email", "Generic GRC tools", "GRC Flow"],
   rows: [
-    { what: "Built for the DPDPA", values: ["A template you maintain", "Usually ISO or GDPR first", "DPDP Act and Rules only, section by section"] },
+    { what: "Built for the DPDP Act", values: ["A template you maintain", "Usually ISO or GDPR first", "DPDP Act and Rules only, section by section"] },
     { what: "First draft of the gap analysis", values: ["Weeks of manual work", "Manual questionnaires", "Hours, AI-drafted with citations"] },
     { what: "Proof for each finding", values: ["Scattered files", "Attachments", "Evidence checked by AI, reviewed by a person"] },
     { what: "Technical checks", values: ["Screenshots on request", "Often extra modules", "AWS and GitHub checked read-only"] },
@@ -424,7 +424,7 @@ export const audienceFlows: { id: string; tab: string; intro: string; steps: Flo
   {
     id: "partners",
     tab: "For GRC partners",
-    intro: "Privacy and GRC consultants running DPDPA assessments for many clients at once.",
+    intro: "Privacy and GRC consultants running DPDP assessments for many clients at once.",
     steps: [
       {
         label: "Add your clients",

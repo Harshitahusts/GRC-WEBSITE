@@ -54,7 +54,7 @@ export function PlatformHub() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">The platform</p>
-          <h2 className="mt-2 max-w-2xl text-3xl font-bold sm:text-[2.1rem]">One workspace for the whole DPDPA job</h2>
+          <h2 className="mt-2 max-w-2xl text-3xl font-bold sm:text-[2.1rem]">One workspace for the whole DPDP job</h2>
           <p className="mt-3 max-w-2xl text-lg text-fg-2">
             Each part of GRC Flow feeds the same cycle, per client. What comes out is a report you can deliver, proof you can show and a system that keeps you compliant.
           </p>
