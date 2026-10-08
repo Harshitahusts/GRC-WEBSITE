@@ -17,10 +17,10 @@ export const solutions: Solution[] = [
     slug: "grc-consultants",
     flowId: "partners",
     name: "For GRC consultants",
-    metaTitle: "DPDPA Assessment Software for GRC and Privacy Consultants",
+    metaTitle: "DPDP Assessment Software for GRC and Privacy Consultants",
     description:
-      "Run DPDPA readiness assessments for many clients at once: a workspace per client, AI-drafted findings you approve, and reviewed reports in Word.",
-    h1: "Run DPDPA assessments for every client from one place",
+      "Run DPDP readiness assessments for many clients at once: a workspace per client, AI-drafted findings you approve, and reviewed reports in Word.",
+    h1: "Run DPDP assessments for every client from one place",
     intro:
       "For privacy and GRC consultants who assess many businesses. Each client gets its own workspace, the AI does the first draft, and nothing reaches a client until you've signed it off.",
     points: [

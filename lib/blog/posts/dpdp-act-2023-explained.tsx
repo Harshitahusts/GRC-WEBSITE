@@ -13,7 +13,6 @@ export const post: Post = {
     "dpdp full form",
     "what is dpdp act",
     "digital personal data protection act 2023",
-    "dpdpa",
   ],
   published: "2026-10-06",
   updated: "2026-10-06",
@@ -28,7 +27,7 @@ export const post: Post = {
   faqs: [
     {
       q: "What is the full form of DPDP?",
-      a: "DPDP stands for Digital Personal Data Protection. The law is the Digital Personal Data Protection Act, 2023 (often shortened to DPDP Act or DPDPA), and its detailed rules are the Digital Personal Data Protection Rules, 2025.",
+      a: "DPDP stands for Digital Personal Data Protection. The law is the Digital Personal Data Protection Act, 2023 (often shortened to DPDP Act), and its detailed rules are the Digital Personal Data Protection Rules, 2025.",
     },
     {
       q: "Is the DPDP Act in force?",
@@ -57,7 +56,7 @@ export const post: Post = {
     <>
       <h2>What is the DPDP Act?</h2>
       <p>
-        The <strong>Digital Personal Data Protection Act, 2023</strong> (DPDP Act, or DPDPA) is India&apos;s law on personal data. It sets out when an organisation may use a
+        The <strong>Digital Personal Data Protection Act, 2023</strong> (DPDP Act) is India&apos;s law on personal data. It sets out when an organisation may use a
         person&apos;s data, what it must tell them, how it must protect the data, and what happens when things go wrong. Once fully in force, it takes over from the older
         &quot;reasonable security practices&quot; regime under Section 43A of the IT Act.
       </p>

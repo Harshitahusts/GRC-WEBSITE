@@ -30,7 +30,7 @@ export function AudienceFlows() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="eyebrow">Who it&apos;s for</p>
-          <h2 className="mt-2 max-w-2xl text-3xl font-bold sm:text-[2.1rem]">Built for the people who do DPDPA work</h2>
+          <h2 className="mt-2 max-w-2xl text-3xl font-bold sm:text-[2.1rem]">Built for the people who do DPDP work</h2>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <div role="tablist" aria-label="Who you are" className="flex rounded-[9px] border border-line bg-surface p-1 shadow-card">

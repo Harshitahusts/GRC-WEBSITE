@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/features/ai-analyst" },
   title: "AI GRC Analyst for DPDP Compliance",
   description:
-    "An AI GRC analyst that reads your DPDPA engagements, findings, risks and evidence and answers with the provision of the Act or Rules behind it. A person always makes the call.",
+    "An AI GRC analyst that reads your DPDP engagements, findings, risks and evidence and answers with the provision of the Act or Rules behind it. A person always makes the call.",
 };
 
 export default function AiAnalystPage() {

@@ -47,7 +47,7 @@ export default function AboutPage() {
         <div>
           <h2 className="text-2xl font-bold">Why we built it</h2>
           <p className="mt-3 text-lg text-fg-2">
-            A DPDPA readiness assessment means checking a business against every obligation in the Act and Rules, gathering evidence, scoring risks and writing the same core documents each time.
+            A DPDP readiness assessment means checking a business against every obligation in the Act and Rules, gathering evidence, scoring risks and writing the same core documents each time.
           </p>
           <p className="mt-3 text-lg text-fg-2">
             We built {site.name} so the parts that follow the text of the law are done by software, and the judgement stays with people who know the client.
