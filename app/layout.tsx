@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookieConsent } from "@/components/cookie-consent";
 import { JsonLd } from "@/components/json-ld";
-import { business, site } from "@/lib/site";
+import { business, site, social } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -39,6 +39,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 logo: `${site.url}/icon.svg`,
                 email: site.email,
                 address: { "@type": "PostalAddress", addressLocality: "Pune", addressRegion: "Maharashtra", addressCountry: "IN" },
+                // The company's social profiles, so search engines link them to GRC Flow.
+                sameAs: social.filter((s) => s.href).map((s) => s.href),
               },
               {
                 "@type": "WebSite",
