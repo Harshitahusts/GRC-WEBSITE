@@ -59,7 +59,8 @@ export const nav = [
 ];
 
 // Social media accounts. Paste each page's URL as you set it up; an account shows in the
-// footer (and in the data search engines read) only once it has a URL.
+// footer as a link (and in the data search engines read) once it has a URL; until
+// then it shows as a faded "coming soon" icon.
 export type SocialKey = "linkedin" | "instagram" | "facebook" | "x" | "youtube";
 export const social: { key: SocialKey; name: string; href: string }[] = [
   { key: "linkedin", name: "LinkedIn", href: "" },
