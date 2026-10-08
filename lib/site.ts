@@ -38,7 +38,7 @@ export const business = {
 // sends these to search engines, which use them to decide when to crawl a page again, so
 // change the date whenever you change that page's content.
 export const pagesUpdated = {
-  marketing: "2026-10-06", // home, product, connectors, pricing, about, contact
+  marketing: "2026-10-08", // home, product, feature pages, connectors, pricing, about, contact
   policies: "2026-10-02", // privacy, terms, cookies, data rights, accessibility
 };
 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { openCookieSettings } from "@/lib/consent";
+import { featurePages } from "@/lib/features";
 import { business, legalNav, nav, site } from "@/lib/site";
 import { IndiaFlag } from "./india-flag";
 import { VaptBadge } from "./vapt-badge";
@@ -10,7 +11,7 @@ import { Logo } from "./logo";
 export function Footer() {
   return (
     <footer className="bg-side text-side-text">
-      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-12 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr_1fr]">
         <div className="max-w-sm">
           <Logo tone="dark" />
           <p className="mt-4 text-side-muted">{site.tagline}</p>
@@ -25,6 +26,16 @@ export function Footer() {
             {nav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="hover:text-white">{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <nav aria-label="Features">
+          <h2 className="text-sm font-semibold text-white">Features</h2>
+          <ul className="mt-3 space-y-2">
+            {featurePages.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="hover:text-white">{item.title}</Link>
               </li>
             ))}
           </ul>

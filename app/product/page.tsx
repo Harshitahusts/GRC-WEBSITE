@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/buttons";
+import { Explore } from "@/components/explore";
 import { Icon, type IconName } from "@/components/icon";
 import { PageHead } from "@/components/page-head";
-import { areas, workflow } from "@/lib/content";
+import { workflow } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -45,25 +46,7 @@ export default function ProductPage() {
 
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-[1240px] px-4 py-14 sm:px-8">
-          <h2 className="text-2xl font-bold">Registers for each engagement</h2>
-          <div className="mt-6 grid gap-4 lg:grid-cols-3">
-            {areas.map((area) => (
-              <div key={area.name} className="card p-5">
-                <h3 className="flex items-center gap-2 font-semibold">
-                  <span className="grid size-8 place-items-center rounded-[8px] bg-accent-soft text-accent"><Icon name={area.icon} className="size-[18px]" /></span>
-                  {area.name}
-                </h3>
-                <ul className="mt-4 space-y-3">
-                  {area.items.map((item) => (
-                    <li key={item.title}>
-                      <strong className="block">{item.title}</strong>
-                      <span className="text-[0.92rem] text-fg-2">{item.body}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <Explore title="Feature by feature" />
         </div>
       </section>
 

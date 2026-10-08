@@ -551,4 +551,26 @@
       transform: translateY(-50%) scale(0.6);
     }
   }
+
+  /* Discovery scan: the column being read is tinted, and each label appears as it's found. */
+  .scan-col {
+    transition: background-color 300ms ease;
+  }
+  .scan-col.is-scanning {
+    background: var(--color-accent-soft);
+  }
+  th.scan-col.is-scanning {
+    box-shadow: inset 0 -2px 0 var(--color-accent);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .scan-tag {
+      animation: scan-in 360ms ease-out both;
+    }
+  }
+  @keyframes scan-in {
+    from {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+  }
 }
