@@ -27,8 +27,8 @@ const sections: Section[] = [
             <tr><th scope="col">Name</th><th scope="col">Category</th><th scope="col">Purpose</th><th scope="col">Lasts</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>grcflow_consent</code></td><td>Strictly necessary</td><td>Remembers your cookie choice</td><td>6 months</td></tr>
-            <tr><td><code>grc_session</code></td><td>Strictly necessary</td><td>Keeps you signed in to the live demo app, if you use it. Set by the demo app.</td><td>8 hours</td></tr>
+            <tr><td data-label="Name"><code>grcflow_consent</code></td><td data-label="Category">Strictly necessary</td><td data-label="Purpose">Remembers your cookie choice</td><td data-label="Lasts">6 months</td></tr>
+            <tr><td data-label="Name"><code>grc_session</code></td><td data-label="Category">Strictly necessary</td><td data-label="Purpose">Keeps you signed in to the live demo app, if you use it. Set by the demo app.</td><td data-label="Lasts">8 hours</td></tr>
           </tbody>
         </table>
         <p>

@@ -208,8 +208,19 @@ export function ComparisonSection() {
   return (
     <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 md:py-20">
       <h2 className="mt-2 max-w-3xl text-3xl font-bold sm:text-[2rem]">Your experts spend their time on judgement, not formatting</h2>
-      <div className="mt-8 overflow-x-auto rounded-[10px] border border-line bg-surface">
-        <table className="w-full min-w-[46rem] border-collapse text-left text-[0.92rem]">
+      {/* Phones: one card per row of the comparison, so nothing scrolls sideways. */}
+      <dl className="mt-8 divide-y divide-line rounded-[10px] border border-line bg-surface md:hidden">
+        {comparison.rows.map((r) => (
+          <div key={r.what} className="p-4">
+            <dt className="font-semibold">{r.what}</dt>
+            <dd className="mt-2 flex gap-2 font-medium"><Icon name="check" className="mt-0.5 size-4 shrink-0 text-good" />GRC Flow: {r.values[2]}</dd>
+            <dd className="mt-1 text-[0.9rem] text-muted">{comparison.columns[0]}: {r.values[0]}</dd>
+            <dd className="text-[0.9rem] text-muted">{comparison.columns[1]}: {r.values[1]}</dd>
+          </div>
+        ))}
+      </dl>
+      <div className="mt-8 hidden rounded-[10px] border border-line bg-surface md:block">
+        <table className="w-full border-collapse text-left text-[0.92rem]">
           <thead>
             <tr className="border-b border-line">
               <td className="w-[22%] p-4" />

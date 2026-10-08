@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { useAutoplay } from "@/lib/use-autoplay";
 import { Icon } from "./icon";
 
@@ -36,15 +35,6 @@ export function DiscoveryScan() {
   const done = reduced ? columns.length : Math.min(index, columns.length); // columns before `done` are read
   const found = columns.slice(0, done).filter((c) => c.found);
 
-  // On narrow screens the table scrolls sideways: keep the column being read in view.
-  // Only the table's own scroll position moves, never the page.
-  const scroller = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const box = scroller.current;
-    const th = box?.querySelectorAll("th")[Math.min(done, columns.length - 1)];
-    if (!box || !th || box.scrollWidth <= box.clientWidth) return;
-    box.scrollTo({ left: done === 0 ? 0 : th.offsetLeft - 24, behavior: reduced ? "auto" : "smooth" });
-  }, [done, reduced]);
 
   return (
     <div {...hold} className="card overflow-hidden p-0">
@@ -60,9 +50,26 @@ export function DiscoveryScan() {
       </div>
 
       <div className="grid lg:grid-cols-[minmax(0,1fr)_17rem]">
-        <div ref={scroller} className="overflow-x-auto">
+        {/* Phones: one line per column, so nothing scrolls sideways. */}
+        <ul className="divide-y divide-line md:hidden">
+          {columns.map((c, i) => (
+            <li key={c.name} className={`scan-col flex items-center justify-between gap-3 px-4 py-2.5 ${i === done ? "is-scanning" : ""}`}>
+              <span className="min-w-0">
+                <span className="block font-mono text-[0.8rem]">{c.name}</span>
+                <span className="block truncate text-[0.85rem] text-muted">{c.values[0]}</span>
+              </span>
+              {i < done &&
+                (c.found ? (
+                  <span className={`badge scan-tag shrink-0 ${c.risk === "high" ? "bg-fail-bg text-fail" : "bg-warn-bg text-warn"}`}>{c.found}</span>
+                ) : (
+                  <span className="badge scan-tag shrink-0 bg-none-bg text-muted">Not personal</span>
+                ))}
+            </li>
+          ))}
+        </ul>
+        <div className="hidden md:block">
           {/* Fixed column widths, so labels appearing don't make the table jump. */}
-          <table className="w-full min-w-[44rem] table-fixed border-collapse text-left text-[0.86rem]">
+          <table className="w-full table-fixed border-collapse text-left text-[0.86rem]">
             <colgroup>
               {columns.map((c) => (
                 <col key={c.name} className={c.name === "support_notes" ? "" : c.name === "order_id" ? "w-[7rem]" : "w-[8.5rem]"} />

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Icon } from "@/components/icon";
 import { featurePages, stageIntro, type Stage } from "@/lib/features";
+import { industries } from "@/lib/industries";
+import { solutions } from "@/lib/solutions";
 
 const stages: Stage[] = ["Assess", "Fix", "Document", "Prove"];
 
@@ -35,6 +37,24 @@ export function Explore({ title = "Each stage, in detail" }: { title?: string })
             </ul>
           </section>
         ))}
+      </div>
+      <div className="mt-12 grid gap-6 border-t border-line pt-6 md:grid-cols-[auto_minmax(0,1fr)] md:gap-x-10">
+        <nav aria-label="By role">
+          <h3 className="font-semibold text-fg-2">By role</h3>
+          <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+            {solutions.map((s) => (
+              <li key={s.slug}><Link href={`/solutions/${s.slug}`} className="font-semibold text-accent hover:underline">{s.name}</Link></li>
+            ))}
+          </ul>
+        </nav>
+        <nav aria-label="By industry">
+          <h3 className="font-semibold text-fg-2">By industry</h3>
+          <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+            {industries.map((i) => (
+              <li key={i.slug}><Link href={`/industries/${i.slug}`} className="font-semibold text-accent hover:underline">{i.name}</Link></li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </div>
   );

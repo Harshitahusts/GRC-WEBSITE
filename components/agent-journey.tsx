@@ -29,7 +29,6 @@ export function AgentJourney() {
   const [visible, setVisible] = useState(false);
   const [held, setHeld] = useState(false);
   const box = useRef<HTMLDivElement>(null);
-  const track = useRef<HTMLOListElement>(null);
 
   const current = journey[step];
   const total = current.log.length + HOLD_LINES;
@@ -73,15 +72,6 @@ export function AgentJourney() {
     return () => clearTimeout(t);
   }, [running, shown, total]);
 
-  // On narrow screens the steps are a sideways strip: keep the current one in view.
-  useEffect(() => {
-    const ol = track.current;
-    const li = ol?.children[step] as HTMLElement | undefined;
-    if (!ol || !li || ol.scrollWidth <= ol.clientWidth) return;
-    const left = li.getBoundingClientRect().left - ol.getBoundingClientRect().left - 16;
-    ol.scrollBy({ left, behavior: reduced ? "auto" : "smooth" });
-  }, [step, reduced]);
-
   const choose = useCallback((i: number) => {
     setStep(i);
     setShown(1);
@@ -117,14 +107,13 @@ export function AgentJourney() {
 
       <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start">
         <ol
-          ref={track}
-          className="journey-track -mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-7 lg:gap-y-10 lg:overflow-visible lg:px-0 lg:pb-0"
+          className="journey-track grid grid-cols-2 gap-3 sm:grid-cols-4 lg:gap-x-7 lg:gap-y-10"
           aria-label="The eight steps"
         >
           {journey.map((s, i) => {
             const state = i === step ? "active" : i < step ? "done" : "next";
             return (
-              <li key={s.title} className={`journey-node relative w-[10.5rem] shrink-0 snap-start lg:w-auto ${orderClass[i]}`} data-arrow={arrows[i]}>
+              <li key={s.title} className={`journey-node relative ${orderClass[i]}`} data-arrow={arrows[i]}>
                 <button
                   type="button"
                   onClick={() => choose(i)}

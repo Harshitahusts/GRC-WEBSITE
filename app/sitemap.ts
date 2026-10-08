@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { posts } from "@/lib/blog";
 import { featurePages } from "@/lib/features";
+import { industries } from "@/lib/industries";
+import { solutions } from "@/lib/solutions";
 import { legalNav, nav, pagesUpdated, site } from "@/lib/site";
 
 // Every public page, for search engines (served at /sitemap.xml). Each entry carries the
@@ -10,7 +12,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blog = posts();
   const newestPost = blog.map((p) => p.updated).sort().at(-1);
   const main = [
-    ...new Set(["/", ...nav.map((n) => n.href), ...featurePages.map((p) => p.href), "/about", "/contact"]),
+    ...new Set([
+      "/",
+      ...nav.map((n) => n.href),
+      ...featurePages.map((p) => p.href),
+      ...solutions.map((s) => `/solutions/${s.slug}`),
+      ...industries.map((i) => `/industries/${i.slug}`),
+      "/about",
+      "/contact",
+    ]),
   ];
   const url = (path: string) => `${site.url}${path === "/" ? "" : path}`;
   return [

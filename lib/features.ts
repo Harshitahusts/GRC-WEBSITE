@@ -37,6 +37,20 @@ export const featurePages: FeaturePage[] = [
     stage: "Assess",
   },
   {
+    href: "/features/risk-register-and-data-flows",
+    title: "Risk register and data-flow map",
+    blurb: "Every gap scored by likelihood and impact; every flow leaving India flagged.",
+    icon: "flow",
+    stage: "Assess",
+  },
+  {
+    href: "/features/ai-app-integration",
+    title: "Connect Claude and other AI apps",
+    blurb: "Read your DPDP work from Claude, Cursor and more, through MCP.",
+    icon: "key",
+    stage: "Assess",
+  },
+  {
     href: "/features/dpdp-registers",
     title: "DPDP compliance registers",
     blurb: "Consent, rights requests, breaches, vendors, DPIAs and policies.",
@@ -56,6 +70,13 @@ export const featurePages: FeaturePage[] = [
     blurb: "Drafted from the client's own records, signed off by a person.",
     icon: "pen",
     stage: "Document",
+  },
+  {
+    href: "/features/evidence-and-audit-log",
+    title: "Evidence and audit log",
+    blurb: "Files behind every control, and a log an auditor can verify.",
+    icon: "clock",
+    stage: "Prove",
   },
   {
     href: "/dpdp-compliance",
