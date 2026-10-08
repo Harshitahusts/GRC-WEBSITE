@@ -35,6 +35,16 @@ Bring your own model: Anthropic Claude, or a free or low-cost provider (Groq, Go
 - GRC Flow helps a consultant prepare a DPDPA readiness assessment. It is not legal advice and not a certification of compliance.
 - AI output can be wrong. That is why findings need human review, citations are checked, and the evidence check never decides compliance.
 
+## Feature pages
+
+- [AI GRC Analyst](https://grc-flow.com/features/ai-analyst): answers about any client with the provision behind it; the five rules that keep a person in charge.
+- [Personal data discovery](https://grc-flow.com/features/personal-data-discovery): what the scanner finds (Aadhaar, PAN, GSTIN, phone, email, UPI, under-18 dates of birth, health details) and how files stay private.
+- [DPDP compliance registers](https://grc-flow.com/features/dpdp-registers): consent, data principal requests, breaches, vendors, DPIAs and policies.
+- [RoPA, privacy notice and DPA drafts](https://grc-flow.com/features/dpdp-documents): documents drafted from the client's records, reviewed before download.
+- [What DPDP compliance takes](https://grc-flow.com/dpdp-compliance): a Data Fiduciary's duties, the 13 May 2027 deadline and the maximum penalties.
+- [Security and hosting in India](https://grc-flow.com/security): hosting in Mumbai, VAPT testing and the safeguards in the app.
+- [Why GRC Flow](https://grc-flow.com/why-grc-flow): compared with spreadsheets and generic GRC tools, and the four-week pilot.
+
 ## Guides (blog)
 
 Plain-English guides to the DPDP Act and Rules, each with its sources:
