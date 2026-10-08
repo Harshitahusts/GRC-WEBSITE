@@ -61,11 +61,9 @@ export const nav = [
 // Social media accounts. Paste each page's URL as you set it up; an account shows in the
 // footer as a link (and in the data search engines read) once it has a URL; until
 // then it shows as a faded "coming soon" icon.
-export type SocialKey = "linkedin" | "instagram" | "facebook" | "x" | "youtube";
+export type SocialKey = "linkedin" | "x" | "youtube";
 export const social: { key: SocialKey; name: string; href: string }[] = [
-  { key: "linkedin", name: "LinkedIn", href: "" },
-  { key: "instagram", name: "Instagram", href: "" },
-  { key: "facebook", name: "Facebook", href: "" },
-  { key: "x", name: "X (Twitter)", href: "" },
-  { key: "youtube", name: "YouTube", href: "" },
+  { key: "linkedin", name: "LinkedIn", href: "https://www.linkedin.com/company/grc-flow/" },
+  { key: "x", name: "X (Twitter)", href: "https://x.com/GRC_Flow" },
+  { key: "youtube", name: "YouTube", href: "https://www.youtube.com/channel/UCLjy5dVyeYvZEMZey0wKHLQ" },
 ];
