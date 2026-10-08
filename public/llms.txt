@@ -45,6 +45,12 @@ Bring your own model: Anthropic Claude, or a free or low-cost provider (Groq, Go
 - [Security and hosting in India](https://grc-flow.com/security): hosting in Mumbai, VAPT testing and the safeguards in the app.
 - [Why GRC Flow](https://grc-flow.com/why-grc-flow): compared with spreadsheets and generic GRC tools, and the four-week pilot.
 
+- [Risk register and data-flow map](https://grc-flow.com/features/risk-register-and-data-flows): likelihood x impact scoring, and where personal data goes, with flows leaving India flagged.
+- [Evidence and audit log](https://grc-flow.com/features/evidence-and-audit-log): evidence files per control and a tamper-evident, hash-chained audit log.
+- [Connect AI apps (MCP)](https://grc-flow.com/features/ai-app-integration): read-only access for Claude, Cursor and other AI apps with per-person keys.
+- [For GRC consultants](https://grc-flow.com/solutions/grc-consultants) and [for businesses](https://grc-flow.com/solutions/businesses): how GRC Flow works for each.
+- DPDP compliance by industry: [EdTech](https://grc-flow.com/industries/edtech), [BFSI](https://grc-flow.com/industries/bfsi), [healthcare](https://grc-flow.com/industries/healthcare), [SaaS](https://grc-flow.com/industries/saas), [e-commerce](https://grc-flow.com/industries/ecommerce).
+
 ## Guides (blog)
 
 Plain-English guides to the DPDP Act and Rules, each with its sources:

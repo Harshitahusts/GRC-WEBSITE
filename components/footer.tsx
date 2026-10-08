@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { openCookieSettings } from "@/lib/consent";
 import { featurePages } from "@/lib/features";
+import { industries } from "@/lib/industries";
+import { solutions } from "@/lib/solutions";
 import { business, legalNav, nav, site } from "@/lib/site";
 import { IndiaFlag } from "./india-flag";
 import { VaptBadge } from "./vapt-badge";
@@ -11,7 +13,7 @@ import { Logo } from "./logo";
 export function Footer() {
   return (
     <footer className="bg-side text-side-text">
-      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-12 sm:px-8 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.2fr_1.1fr_0.9fr_0.9fr]">
         <div className="max-w-sm">
           <Logo tone="dark" />
           <p className="mt-4 text-side-muted">{site.tagline}</p>
@@ -36,6 +38,21 @@ export function Footer() {
             {featurePages.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="hover:text-white">{item.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <nav aria-label="Solutions">
+          <h2 className="text-sm font-semibold text-white">Solutions</h2>
+          <ul className="mt-3 space-y-2">
+            {solutions.map((s) => (
+              <li key={s.slug}>
+                <Link href={`/solutions/${s.slug}`} className="hover:text-white">{s.name}</Link>
+              </li>
+            ))}
+            {industries.map((i) => (
+              <li key={i.slug}>
+                <Link href={`/industries/${i.slug}`} className="hover:text-white">{i.name}</Link>
               </li>
             ))}
           </ul>

@@ -51,10 +51,10 @@ const sections: Section[] = [
           <tr><th scope="col">Purpose</th><th scope="col">Data</th><th scope="col">Basis</th></tr>
         </thead>
         <tbody>
-          <tr><td>Arrange and run your demo</td><td>Demo request details</td><td>Your consent (Section 6)</td></tr>
-          <tr><td>Send product updates, if you ask for them</td><td>Name, email</td><td>Your consent, which you can withdraw any time</td></tr>
-          <tr><td>Handle privacy requests and unsubscribes</td><td>Request details</td><td>Complying with the law (Section 7)</td></tr>
-          <tr><td>Keep the site secure and working</td><td>Server logs, cookie choice</td><td>Complying with the law, including the DPDP Rules&apos; log requirements (Section 7)</td></tr>
+          <tr><td data-label="Purpose">Arrange and run your demo</td><td data-label="Data">Demo request details</td><td data-label="Basis">Your consent (Section 6)</td></tr>
+          <tr><td data-label="Purpose">Send product updates, if you ask for them</td><td data-label="Data">Name, email</td><td data-label="Basis">Your consent, which you can withdraw any time</td></tr>
+          <tr><td data-label="Purpose">Handle privacy requests and unsubscribes</td><td data-label="Data">Request details</td><td data-label="Basis">Complying with the law (Section 7)</td></tr>
+          <tr><td data-label="Purpose">Keep the site secure and working</td><td data-label="Data">Server logs, cookie choice</td><td data-label="Basis">Complying with the law, including the DPDP Rules&apos; log requirements (Section 7)</td></tr>
         </tbody>
       </table>
     ),

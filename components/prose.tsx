@@ -20,7 +20,12 @@ export function Prose({ children }: { children: React.ReactNode }) {
   );
 }
 
-// A wide table that scrolls sideways on phones instead of breaking the page.
+// A table that fits the screen on phones: tighter cells, smaller text, and long words
+// allowed to break, so the reader never has to scroll sideways.
 export function TableWrap({ children }: { children: React.ReactNode }) {
-  return <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">{children}</div>;
+  return (
+    <div className="max-sm:[&_table]:text-[0.86rem] max-sm:[&_td]:px-1.5 max-sm:[&_th]:px-1.5 [&_td]:[overflow-wrap:anywhere] [&_th]:[overflow-wrap:anywhere]">
+      {children}
+    </div>
+  );
 }
