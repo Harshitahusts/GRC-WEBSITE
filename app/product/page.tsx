@@ -17,7 +17,7 @@ const workspace: { icon: IconName; title: string; body: string }[] = [
   { icon: "check", title: "Work queue", body: "Everything open across clients, most urgent first." },
   { icon: "spark", title: "GRC Analyst", body: "Answers questions about any client from live workspace data, citing the Act and Rules. Read-only." },
   { icon: "flow", title: "Data flows", body: "A map of where each client's personal data goes, with flows leaving India flagged." },
-  { icon: "plug", title: "Connectors", body: "Read-only GitHub and AWS checks that back findings with evidence." },
+  { icon: "plug", title: "Connectors", body: "Read-only checks on code hosting, cloud (AWS, Google Cloud, Azure) and Microsoft 365 sign-ins that back findings with evidence." },
   { icon: "book", title: "Corpus", body: "The text of the DPDP Act and Rules that every citation is checked against." },
   { icon: "users", title: "Team and roles", body: "Admins, members and read-only viewers." },
   { icon: "clock", title: "Audit log", body: "Every change, who made it and when." },
