@@ -6,7 +6,7 @@ import { connectors } from "@/lib/content";
 export const metadata: Metadata = {
   alternates: { canonical: "/connectors" },
   title: "Connectors: Automated DPDP Evidence from AWS and GitHub",
-  description: "Read-only GitHub and AWS checks that back DPDP findings with evidence, with more connectors on the way.",
+  description: "Read-only checks on GitHub, GitLab, Bitbucket, AWS, Google Cloud, Azure and Microsoft Entra ID that back DPDP findings with evidence, plus Slack, Teams and Google Chat updates.",
 };
 
 export default function ConnectorsPage() {
