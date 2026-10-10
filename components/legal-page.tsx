@@ -4,12 +4,25 @@ import { PageHead } from "./page-head";
 export type Section = { id: string; title: string; body: React.ReactNode };
 
 // Shared layout for the policies: dark header, a table of contents, then sections.
-export function LegalPage({ eyebrow, title, intro, sections }: { eyebrow: string; title: string; intro: React.ReactNode; sections: Section[] }) {
+export function LegalPage({
+  eyebrow,
+  title,
+  intro,
+  sections,
+  updated = business.policiesUpdated,
+}: {
+  eyebrow: string;
+  title: string;
+  intro: React.ReactNode;
+  sections: Section[];
+  // A page that changed after the others shows its own date.
+  updated?: string;
+}) {
   return (
     <>
       <PageHead eyebrow={eyebrow} title={title}>
         <p>{intro}</p>
-        <p className="mt-2 text-[0.92rem] text-night-text/80">Last updated {business.policiesUpdated}</p>
+        <p className="mt-2 text-[0.92rem] text-night-text/80">Last updated {updated}</p>
       </PageHead>
       <div className="mx-auto grid max-w-[1240px] grid-cols-[minmax(0,1fr)] gap-10 px-4 py-12 sm:px-8 lg:grid-cols-[15rem_minmax(0,1fr)]">
         <nav aria-label="On this page" className="lg:sticky lg:top-36 lg:self-start">
