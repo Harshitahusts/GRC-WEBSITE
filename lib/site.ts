@@ -32,6 +32,7 @@ export const business = {
   grievanceOfficer: { email: "talk@grc-flow.com" },
   jurisdiction: "Pune, India",
   policiesUpdated: "2 October 2026",
+  termsUpdated: "10 October 2026",
 };
 
 // When the pages last changed in a way a reader would notice, as YYYY-MM-DD. The sitemap
@@ -39,7 +40,7 @@ export const business = {
 // change the date whenever you change that page's content.
 export const pagesUpdated = {
   marketing: "2026-10-08", // home, product, feature pages, connectors, pricing, about, contact
-  policies: "2026-10-02", // privacy, terms, cookies, data rights, accessibility
+  policies: "2026-10-10", // privacy, terms, cookies, data rights, accessibility
 };
 
 export const legalNav = [
